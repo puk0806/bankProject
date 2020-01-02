@@ -160,4 +160,57 @@ public class Y_itemDAO {
 		return yegeum_item_name;
 	}
 
+	
+
+	public List<Y_itemDTO> selectByYItemNo(Connection conn, String y_item_no) {
+		String sql = "select * from y_item where y_item_no = ? ";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<Y_itemDTO> list = new ArrayList<Y_itemDTO>();
+		Y_itemDTO y_itemDto = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, y_item_no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				System.out.println("상품 존재");
+				y_itemDto = new Y_itemDTO(rs.getString("y_item_no")
+										,I_kind_rcDAO.getInstance().getItem_kind(conn, rs.getString("i_kind_rc_no"))
+										,I_type_rfsDAO.getInstance().getItem_type(conn, rs.getString("i_type_rfs_no"))
+										,rs.getString("ps_type_no")
+										,St_typeDAO.getInstance().getSign_target(conn, rs.getString("st_type_no"))
+										,T_profitDAO.getInstance().getTexfree_profit(conn, rs.getString("t_profit_no"))
+										,rs.getString("yegeum_item_name")
+										,rs.getDouble("yegeum_interest")
+										,rs.getString("yegeum_item_length")
+										,rs.getInt("yegeum_item_limitmoney")
+										,rs.getString("treat_interest_check_exp")
+										,rs.getString("interest_payment_method")
+										,rs.getString("end_terminate_method")
+										,rs.getString("outlines")
+										,rs.getString("yegeum_feature")
+										,rs.getString("yegeumer_protect_check")
+										,rs.getString("sign_target")
+										,rs.getString("sign_method")
+										,rs.getInt("commission_total_count"));
+										
+				
+				
+				if(rs.getString("yegeumer_protect_content")!=null) y_itemDto.setYegeumer_protect_content(rs.getString("yegeumer_protect_content"));
+				if(rs.getString("available_chan")!=null) y_itemDto.setAvailable_chan(rs.getString("available_chan"));
+				list.add(y_itemDto);
+			}
+		} catch (SQLException e) {
+			System.out.println("y_itemDAO selectByYItemNo예외");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		return list;
+	}
+
+
 }

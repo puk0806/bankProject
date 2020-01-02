@@ -159,4 +159,54 @@ public class S_itemDAO {
 		return saving_item_name;
 	}
 
+
+
+	public List<S_itemDTO> selectBySItemNo(Connection conn, String s_item_no) {
+		String sql = "select * from s_item where s_item_no = ? ";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<S_itemDTO> list = new ArrayList<S_itemDTO>();
+		S_itemDTO s_itemDto = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, s_item_no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				s_itemDto = new S_itemDTO(rs.getString("s_item_no")
+						,I_kind_rcDAO.getInstance().getItem_kind(conn, rs.getString("i_kind_rc_no"))
+						,I_type_rfsDAO.getInstance().getItem_type(conn, rs.getString("i_type_rfs_no"))
+						,rs.getString("ps_type_no")
+						,St_typeDAO.getInstance().getSign_target(conn, rs.getString("st_type_no"))
+						,T_profitDAO.getInstance().getTexfree_profit(conn, rs.getString("t_profit_no"))
+						,rs.getString("saving_item_name")
+						,rs.getDouble("savng_interest")
+						,rs.getString("savings_item_length")
+						,rs.getString("treat_interest_check")
+						,rs.getString("interest_pay_method")
+						,rs.getString("end_terminate_method")
+						,rs.getString("outlines")
+						,rs.getString("saving_feature")
+						,rs.getString("customer_protect_check")
+						,rs.getString("sign_target")
+						,rs.getString("sign_method"));
+				
+				
+				if(rs.getInt("saving_item_maxmoney")!=0) s_itemDto.setSaving_item_maxmoney(rs.getInt("saving_item_maxmoney")); 
+				if(rs.getString("customer_protect_content")!=null) s_itemDto.setCustomer_protect_content(rs.getString("customer_protect_content")); 
+				
+				list.add(s_itemDto);
+			}
+		} catch (SQLException e) {
+			System.out.println("S_itemDAO selectBySItemNo예외");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return list;
+	}
+
 }

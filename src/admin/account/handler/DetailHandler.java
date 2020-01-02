@@ -20,7 +20,6 @@ public class DetailHandler implements CommandHandler{
 		List<A_detailDTO> a_detailList = null;
 		AccountDetailService service = new AccountDetailService();
 		String account_number = trim(request.getParameter("account_number"));
-		System.out.println("account number : "+ account_number);
 		
 		a_detailList = service.detailSearch(account_number);
 		request.setAttribute("a_detailList", a_detailList);

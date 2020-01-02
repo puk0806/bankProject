@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>product/search/s_itemSearch.jsp</h3>
+<h3>adminview/product/register/s_itemDetail.jsp</h3>
+
 <c:if test="${empty s_itemList }">
 	<h4>상품이 없습니다.</h4>
 </c:if>
@@ -21,27 +22,11 @@
 		금리 : ${dto.savng_interest } <br>
 		가입최대금액 : ${dto.saving_item_maxmoney } <br>
 		개요  : ${dto.outlines } <br>
-		<a href="/bankJSPProject/product/s_itemDetail.admin?item_no=${dto.s_item_no}">자세히 보기</a>
+		<a href="/bankJSPProject/product/s_itemUpdate.admin?item_no=${dto.s_item_no}">수정하기</a>
 		<br>
-		
-		
 	</c:forEach>
 </c:if>
 
-  <form action="/bankJSPProject/product/s_item.admin" method="post">
-         <select name="searchCondition" id="searchCondition">
-            <option value="1">상품명</option>
-            <option value="2">상품설명</option>
-         </select>
-         <script>
-         $("#searchCondition").val('${searchCondition}');
-         </script>
-         <input type="text" name="searchWord" id="searchWord" value="${ searchWord }">
-         <input type="submit" value="search">
-      </form>  
 
-<script>
-$(function(){});
-</script>
 </body>
 </html>

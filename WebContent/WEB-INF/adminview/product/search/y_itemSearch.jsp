@@ -20,6 +20,7 @@
 		상품종류 : ${dto.item_kind } <br>
 		상품유형 : ${dto.item_type } <br>
 		개요  : ${dto.outlines } <br>
+		<a href="/bankJSPProject/product/y_itemDetail.admin?item_no=${dto.y_item_no}">자세히 보기</a>
 		<br>
 	</c:forEach>
 </c:if>
