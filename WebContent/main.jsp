@@ -12,12 +12,12 @@
 
 <h4>
 <c:if test="${ ! empty authUser }">
-  ${ authUser.user_name }님, 안녕하세요.<br>
+  ${ authUser.name }님, 안녕하세요.<br>
   <br>
-  <h3><a href="/bankJSPProject/auth/logout.admin">[로그아웃하기]</a></h3><br>
+  <h3><a href="/bankJSPProject/auth/logout.auth">[로그아웃하기]</a></h3><br>
 </c:if>
 <c:if test="${ empty authUser }">
- <a href="/bankJSPProject/auth/login.admin">로그인하기</a><br>
+ <a href="/bankJSPProject/auth/login.auth">로그인하기</a><br>
 </c:if>
 </h4>
 

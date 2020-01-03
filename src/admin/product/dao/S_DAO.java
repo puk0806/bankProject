@@ -26,19 +26,18 @@ public class S_DAO {
 		return s_Dao;
 	}
 
-	public List<S_DTO> selectBySItemNo(Connection conn, String s_item_no) {
+	public S_DTO selectBySItemNo(Connection conn, String s_item_no) {
 		String sql = "select * from s_item where s_item_no = ? ";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		ArrayList<S_DTO> list = new ArrayList<S_DTO>();
 		S_DTO s_Dto = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, s_item_no);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				s_Dto = new S_DTO(rs.getString("s_item_no")
 								,rs.getString("i_kind_rc_no")
 								,rs.getString("i_type_rfs_no")
@@ -61,7 +60,6 @@ public class S_DAO {
 				if(rs.getInt("saving_item_maxmoney")!=0) s_Dto.setSaving_item_maxmoney(rs.getInt("saving_item_maxmoney")); 
 				if(rs.getString("customer_protect_content")!=null) s_Dto.setCustomer_protect_content(rs.getString("customer_protect_content")); 
 				
-				list.add(s_Dto);
 			}
 		} catch (SQLException e) {
 			System.out.println("S_itemDAO selectBySItemNo예외");
@@ -71,7 +69,7 @@ public class S_DAO {
 			JdbcUtil.close(pstmt);
 		}
 		
-		return list;
+		return s_Dto;
 	}
 	public void insertProduct(Connection conn, String i_type_rfs_no, String st_type_no, String t_profit_no,
 			String saving_item_name, Double savng_interest, String savings_item_length, int saving_item_maxmoney,
@@ -115,7 +113,7 @@ public class S_DAO {
 			String t_profit_no, String saving_item_name, Double savng_interest, String savings_item_length,
 			int saving_item_maxmoney, String treat_interest_check, String interest_pay_method,
 			String end_terminate_method, String outlines, String saving_feature, String customer_protect_check,
-			String customer_protect_content, String sign_target, String sign_method) {
+			String customer_protect_content, String sign_target, String sign_method,String ps_type_no) {
 		
 		
 		String sql = "update s_item " + 
@@ -135,6 +133,7 @@ public class S_DAO {
 				"    ,customer_protect_content =? " + 
 				"    ,sign_target =? " + 
 				"    ,sign_method =? " + 
+				"    ,ps_type_no =? " + 
 				"where s_item_no = ?";
 		PreparedStatement pstmt = null;
 			
@@ -156,7 +155,8 @@ public class S_DAO {
 				pstmt.setString(14,customer_protect_content );
 				pstmt.setString(15,sign_target );
 				pstmt.setString(16,sign_method );
-				pstmt.setString(17,item_no );
+				pstmt.setString(17,ps_type_no );
+				pstmt.setString(18,item_no );
 
 				pstmt.executeUpdate();
 		

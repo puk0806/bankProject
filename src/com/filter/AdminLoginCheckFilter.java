@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LoginCheckFilter implements Filter{
+public class AdminLoginCheckFilter implements Filter{
 	
 
 	@Override
@@ -25,7 +25,7 @@ public class LoginCheckFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response
 			, FilterChain chain)
 			throws IOException, ServletException { 
-System.out.println("> LoginCheckFilter.doFilter()...");		
+System.out.println("> AdminLoginCheckFilter.adminFilter()...");		
 		
 		HttpServletRequest httpRequest =  (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession(false);
@@ -33,14 +33,14 @@ System.out.println("> LoginCheckFilter.doFilter()...");
 		System.out.println( "\t httpRequest.getRequestURI() : " + httpRequest.getRequestURI() );
 		
 		boolean login = false;
-		if(session != null&&session.getAttribute("authUser") != null ) {
+		if(session != null&&session.getAttribute("authAdmin") != null ) {
 				System.out.println("로그인 됨");
 				chain.doFilter(request, response);
 		}else {
 			System.out.println("로그인 안됨");
 			session.setAttribute("referer",httpRequest.getRequestURI());
 			HttpServletResponse res = (HttpServletResponse)response;
-			res.sendRedirect("/bankJSPProject/auth/login.auth");
+			res.sendRedirect("/bankJSPProject/auth/adminlogin.auth");
 		}
 	}
 

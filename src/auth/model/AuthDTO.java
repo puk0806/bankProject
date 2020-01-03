@@ -2,37 +2,40 @@ package auth.model;
 
 public class AuthDTO {
 
-	private String u_info_no;
-	private String user_name;
+	private String info_no;
+	private String name;
 	private String user_id;
 	private String user_pwd;
 	
 	public AuthDTO() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public AuthDTO(String u_info_no, String user_name, String user_id, String user_pwd) {
+
+	public AuthDTO(String info_no, String name, String user_id, String user_pwd) {
 		super();
-		this.u_info_no = u_info_no;
-		this.user_name = user_name;
+		this.info_no = info_no;
+		this.name = name;
 		this.user_id = user_id;
 		this.user_pwd = user_pwd;
 	}
 
+	
+	public String getInfo_no() {
+		return info_no;
+	}
 
+	public void setInfo_no(String info_no) {
+		this.info_no = info_no;
+	}
 
-	public String getU_info_no() {
-		return u_info_no;
+	public String getName() {
+		return name;
 	}
-	public void setU_info_no(String u_info_no) {
-		this.u_info_no = u_info_no;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getUser_name() {
-		return user_name;
-	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
+
 	public String getUser_id() {
 		return user_id;
 	}

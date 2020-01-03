@@ -9,9 +9,10 @@
 </head>
 <body>
 <div style="margin: 0 auto;width:800px">
-	<form action="/bankJSPProject/auth/login.auth" method="POST">
+<h3>관리자 로그인</h3>
+	<form action="/bankJSPProject/auth/adminlogin.auth" method="POST">
 	<p>
-		아이디:<br/><input type="text" name="user_id" value="miji12">
+		아이디:<br/><input type="text" name="user_id" value="10000000">
 	</p>
 	<p>
 		암호:<br/><input type="password" name="user_pwd" value="1234">

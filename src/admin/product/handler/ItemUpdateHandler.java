@@ -41,14 +41,14 @@ public class ItemUpdateHandler implements CommandHandler{
 		String type = command.substring(0,command.length()-6);
 		
 		if(type.equals("g_item")) {
-			List<G_DTO> g_itemList = service.g_itemSearch(item_no);
-			request.setAttribute("g_itemList", g_itemList);
+			G_DTO g_item = service.g_itemSearch(item_no);
+			request.setAttribute("g_item", g_item);
 		}else if(type.equals("s_item")) {
-			List<S_DTO> s_itemList = service.s_itemSearch(item_no);
-			request.setAttribute("s_itemList", s_itemList);
+			S_DTO s_item = service.s_itemSearch(item_no);
+			request.setAttribute("s_item", s_item);
 		}else if(type.equals("y_item")) {
-			List<Y_DTO> y_itemList = service.y_itemSearch(item_no);
-			request.setAttribute("y_itemList", y_itemList);
+			Y_DTO y_item = service.y_itemSearch(item_no);
+			request.setAttribute("y_item", y_item);
 		}
 		
 		return FORM_VIEW+"search/"+command;
@@ -78,13 +78,14 @@ public class ItemUpdateHandler implements CommandHandler{
 				String sign_target = request.getParameter("sign_target");
 				String[] sign_method = request.getParameterValues("sign_method");
 				int commission_total_count = Integer.parseInt(request.getParameter("commission_total_count"));
-				String available_chan = request.getParameter("available_chan");
+				String[] available_chan = request.getParameterValues("available_chan");
+				String ps_type_no = request.getParameter("ps_type_no");
 				
 				service.y_itemUpdate(item_no,st_type_no,t_profit_no,yegeum_item_name,yegeum_interest,yegeum_item_length
 										,yegeum_item_limitmoney,treat_interest_check_exp,interest_payment_method
 										,end_terminate_method,outlines,yegeum_feature
 										,yegeumer_protect_check,yegeumer_protect_content,sign_target
-										,sign_method,commission_total_count,available_chan);
+										,sign_method,commission_total_count,available_chan,ps_type_no);
 				
 			}else if(command.equals("g_itemUpdate")) {
 				String st_type_no = request.getParameter("st_type_no");
@@ -101,11 +102,12 @@ public class ItemUpdateHandler implements CommandHandler{
 				String sign_target = request.getParameter("sign_target");
 				String[] sign_method = request.getParameterValues("sign_method");
 				int gold_price =  Integer.parseInt(request.getParameter("gold_price"));
+				String ps_type_no = request.getParameter("ps_type_no");
 				
 				service.g_itemUpdate(item_no,st_type_no,r_method_type_no,currency_no,g_item_name,
 				sign_period,gold_item_transunit
 				,treat_transrate_check,outlines,feature,customer_protect_check
-				,customer_protect_content,sign_target,sign_method,gold_price);
+				,customer_protect_content,sign_target,sign_method,gold_price,ps_type_no);
 				
 			}else if(command.equals("s_itemUpdate")) {
 				String i_type_rfs_no = request.getParameter("i_type_rfs_no");
@@ -124,14 +126,14 @@ public class ItemUpdateHandler implements CommandHandler{
 				String customer_protect_content = request.getParameter("customer_protect_content");
 				String sign_target = request.getParameter("sign_target");
 				String[] sign_method = request.getParameterValues("sign_method");
-				
+				String ps_type_no = request.getParameter("ps_type_no");
 				
 				
 				service.s_itemUpdate(item_no,i_type_rfs_no,st_type_no,t_profit_no,
 				saving_item_name, savng_interest
 				,savings_item_length,saving_item_maxmoney,treat_interest_check
 				,interest_pay_method,end_terminate_method,outlines,saving_feature
-				,customer_protect_check,customer_protect_content,sign_target,sign_method);
+				,customer_protect_check,customer_protect_content,sign_target,sign_method,ps_type_no);
 				
 				
 			}

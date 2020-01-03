@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,20 @@
 </head>
 <body>
 <h3>관리자 메인</h3>
+
+
+<h4>
+<c:if test="${ ! empty authAdmin }">
+  ${ authAdmin.name }님, 안녕하세요.<br>
+  <br>
+  <h3><a href="/bankJSPProject/auth/adminlogout.auth">[로그아웃하기]</a></h3><br>
+</c:if>
+<c:if test="${ empty authAdmin }">
+ <a href="/bankJSPProject/auth/adminlogin.auth">로그인하기</a><br>
+</c:if>
+</h4>
+
+
 
 <div>
 	<ol>

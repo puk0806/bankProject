@@ -27,19 +27,18 @@ public class G_DAO {
 		return g_Dao;
 	}
 
-	public List<G_DTO> selectByGItemNo(Connection conn, String g_item_no) {
+	public G_DTO selectByGItemNo(Connection conn, String g_item_no) {
 		String sql = "select * from g_item where g_item_no = ? ";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		ArrayList<G_DTO> list = new ArrayList<G_DTO>();
 		G_DTO g_Dto = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, g_item_no);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				g_Dto = new G_DTO(rs.getString("g_item_no")
 						,rs.getString("i_kind_rc_no")
 						,rs.getString("i_type_rfs_no")
@@ -61,7 +60,6 @@ public class G_DAO {
 				if(rs.getInt("sign_period")!=0) g_Dto.setSign_period(rs.getInt("sign_period"));
 				if(rs.getString("customer_protect_content")!=null) g_Dto.setCustomer_protect_content(rs.getString("customer_protect_content"));
 				
-				list.add(g_Dto);
 			}
 		} catch (SQLException e) {
 			System.out.println("G_itemDAO selectByGItemNo 예외");
@@ -71,13 +69,13 @@ public class G_DAO {
 			JdbcUtil.close(pstmt);
 		}
 		
-		return list;
+		return g_Dto;
 	}
 
 	public void updateProduct(Connection conn, String item_no, String st_type_no, String r_method_type_no,
 			String currency_no, String g_item_name, int sign_period, Double gold_item_transunit,
 			String treat_transrate_check, String outlines, String feature, String customer_protect_check,
-			String customer_protect_content, String sign_target, String sign_method, int gold_price) {
+			String customer_protect_content, String sign_target, String sign_method, int gold_price,String ps_type_no) {
 
 		String sql = "update g_item " + 
 				"set st_type_no = ? " + 
@@ -94,6 +92,7 @@ public class G_DAO {
 				"    ,sign_target =? " + 
 				"    ,sign_method =? " + 
 				"    ,gold_price =? " + 
+				"    ,ps_type_no =? " + 
 				"where g_item_no = ? " ;
 		
 		PreparedStatement pstmt = null;
@@ -114,7 +113,8 @@ public class G_DAO {
 			pstmt.setString(12,sign_target );
 			pstmt.setString(13,sign_method );
 			pstmt.setInt(14,gold_price );
-			pstmt.setString(15,item_no );
+			pstmt.setString(15,ps_type_no );
+			pstmt.setString(16,item_no );
 		
 
 			pstmt.executeUpdate();

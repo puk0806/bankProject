@@ -34,6 +34,9 @@ public class ControllerUsingURI extends HttpServlet {
         } catch (IOException e) {
             throw new ServletException(e);
         }
+        
+        
+        
         Iterator keyIter = prop.keySet().iterator();
         while (keyIter.hasNext()) {
             String command = (String) keyIter.next();

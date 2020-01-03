@@ -26,19 +26,18 @@ public class Y_DAO {
 		return y_Dao;
 	}
 
-	public List<Y_DTO> selectByYItemNo(Connection conn, String y_item_no) {
+	public Y_DTO selectByYItemNo(Connection conn, String y_item_no) {
 		String sql = "select * from y_item where y_item_no = ? ";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		ArrayList<Y_DTO> list = new ArrayList<Y_DTO>();
 		Y_DTO y_Dto = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, y_item_no);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				System.out.println("상품 존재");
 				y_Dto = new Y_DTO(rs.getString("y_item_no")
 								,rs.getString("i_kind_rc_no")
@@ -64,7 +63,6 @@ public class Y_DAO {
 				
 				if(rs.getString("yegeumer_protect_content")!=null) y_Dto.setYegeumer_protect_content(rs.getString("yegeumer_protect_content"));
 				if(rs.getString("available_chan")!=null) y_Dto.setAvailable_chan(rs.getString("available_chan"));
-				list.add(y_Dto);
 			}
 		} catch (SQLException e) {
 			System.out.println("y_itemDAO selectByYItemNo예외");
@@ -73,7 +71,7 @@ public class Y_DAO {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
-		return list;
+		return y_Dto;
 	}
 
 	public void insertProduct(Connection conn, String st_type_no, String t_profit_no, String yegeum_item_name,
@@ -122,7 +120,7 @@ public class Y_DAO {
 			String yegeum_item_name, Double yegeum_interest, String yegeum_item_length, int yegeum_item_limitmoney,
 			String treat_interest_check_exp, String interest_payment_method, String end_terminate_method,
 			String outlines, String yegeum_feature, String yegeumer_protect_check, String yegeumer_protect_content,
-			String sign_target, String sign_method, int commission_total_count, String available_chan) {
+			String sign_target, String sign_method, int commission_total_count, String available_chan,String ps_type_no) {
 		
 		String sql = "update y_item " + 
 				"set st_type_no = ? " + 
@@ -142,6 +140,7 @@ public class Y_DAO {
 				"    ,sign_method =? " + 
 				"    ,commission_total_count =? " + 
 				"    ,available_chan =?  " + 
+				"    ,ps_type_no =?  " + 
 				"where y_item_no = ? " ;
 		
 		PreparedStatement pstmt = null;
@@ -165,7 +164,8 @@ public class Y_DAO {
 			pstmt.setString(15,sign_method );
 			pstmt.setInt(16,commission_total_count );
 			pstmt.setString(17,available_chan );
-			pstmt.setString(18,item_no );
+			pstmt.setString(18,ps_type_no );
+			pstmt.setString(19,item_no );
 		
 
 			pstmt.executeUpdate();
