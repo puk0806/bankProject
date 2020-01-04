@@ -1052,14 +1052,14 @@ span.wme-btn-open a {display:inline-block;width:73px;height:18px;font-size:0;lin
 .ps-main-top ul {margin:0 0 0 105px;}
 .ps-main-top li {float:left;margin:25px 0 0 0;width:105px;}
 .ps-main-top li a {display:block;color:#333;font-size:14px;padding-top:49px;height:15px;text-align:center;}
-.ps-main-top li.item01 {background:url(/img/section/ps/main/img_con-icon01.gif) no-repeat top;}
-.ps-main-top li.item02 {background:url(/img/section/ps/main/img_con-icon02.gif) no-repeat top;}
-.ps-main-top li.item03 {background:url(/img/section/ps/main/img_con-icon03.gif) no-repeat top;}
-.ps-main-top li.item04 {background:url(/img/section/ps/main/img_con-icon04.gif) no-repeat top;}
-.ps-main-top li.item05 {background:url(/img/section/ps/main/img_con-icon05_170110.png) no-repeat top;}
-.ps-main-top li.item06 {background:url(/img/section/ps/main/img_con-icon06.gif) no-repeat top;}
-.ps-main-top li.item07 {background:url(/img/section/ps/main/img_con-icon07.gif) no-repeat top;}
-.ps-main-top li.item08 {background:url(/img/section/ps/main/img_con-icon08.gif) no-repeat top;}
+.ps-main-top li.item01 {background:url(/bankJSPProject/image/main/img_con-icon01.gif) no-repeat top;}
+.ps-main-top li.item02 {background:url(/bankJSPProject/image/main/img_con-icon02.gif) no-repeat top;}
+.ps-main-top li.item03 {background:url(/bankJSPProject/image/main/img_con-icon03.gif) no-repeat top;}
+.ps-main-top li.item04 {background:url(/bankJSPProject/image/main/img_con-icon04.gif) no-repeat top;}
+.ps-main-top li.item05 {background:url(/bankJSPProject/image/image/main/img_con-icon05_170110.png) no-repeat top;}
+.ps-main-top li.item06 {background:url(/bankJSPProject/image/main/img_con-icon06.gif) no-repeat top;}
+.ps-main-top li.item07 {background:url(/bankJSPProject/image/main/img_con-icon07.gif) no-repeat top;}
+.ps-main-top li.item08 {background:url(/bankJSPProject/image/main/img_con-icon08.gif) no-repeat top;}
 .ps-con-bx {position:relative;height:245px;overflow:hidden;padding-top:28px;}
 .ps-con-bx .ps-mobile-bank {width:950px;height:231px;background:#fff url(/img/section/ps/main/bg_smart_bank_event140731.png) 487px 29px no-repeat;margin:0 auto;margin-top:2px;padding-top:30px;}
 .ps-con-bx .ps-mobile-bank h2 {height:auto !important;margin:0 0 20px 0 !important;}

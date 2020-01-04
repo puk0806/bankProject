@@ -102,7 +102,6 @@ public class Y_DAO {
 			pstmt.setString(15,sign_method );
 			pstmt.setInt(16,commission_total_count );
 			pstmt.setString(17,available_chan );
-			pstmt.setString(17,available_chan );
 		
 
 			pstmt.executeUpdate();

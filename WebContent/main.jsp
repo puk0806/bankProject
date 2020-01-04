@@ -6,20 +6,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
+
+<!-- </head>
+<body> -->
 <jsp:include page="/include/header.jspf"></jsp:include>
 
-<h4>
-<c:if test="${ ! empty authUser }">
-  ${ authUser.name }님, 안녕하세요.<br>
-  <br>
-  <h3><a href="/bankJSPProject/auth/logout.auth">[로그아웃하기]</a></h3><br>
-</c:if>
-<c:if test="${ empty authUser }">
- <a href="/bankJSPProject/auth/login.auth">로그인하기</a><br>
-</c:if>
-</h4>
+<style>
+.ps-main-top {width:950px;margin:0 auto;height:100px;}
+.ps-main-top ul {margin:0 0 0 105px;}
+.ps-main-top li {float:left;margin:25px 0 0 0;width:105px;}
+.ps-main-top li a {display:block;color:#333;font-size:14px;padding-top:49px;height:15px;text-align:center;}
+.ps-main-top li.item01 {background:url(/bankJSPProject/image/main/img_con-icon01.gif) no-repeat top;}
+.ps-main-top li.item02 {background:url(/bankJSPProject/image/main/img_con-icon02.gif) no-repeat top;}
+.ps-main-top li.item03 {background:url(/bankJSPProject/image/main/img_con-icon03.gif) no-repeat top;}
+.ps-main-top li.item04 {background:url(/bankJSPProject/image/main/img_con-icon04.gif) no-repeat top;}
+.ps-main-top li.item05 {background:url(/bankJSPProject/image/main/img_con-icon05_170110.png) no-repeat top;}
+.ps-main-top li.item06 {background:url(/bankJSPProject/image/main/img_con-icon06.gif) no-repeat top;}
+.ps-main-top li.item07 {background:url(/bankJSPProject/image/main/img_con-icon07.gif) no-repeat top;}
+.ps-main-top li.item08 {background:url(/bankJSPProject/image/main/img_con-icon08.gif) no-repeat top;}
+.ps-btn a {
+
+    background: url(/bankJSPProject/image/main/btn_bg_main.png) no-repeat;
+}
+</style>
 
 <!-- 본문시작 -->
 <!-- content_common -->
@@ -46,7 +55,7 @@
     
 	
 		<div class="ps-con-bx1">
-			<div class="ps-mobile-bank platform" style="background:#fff url(/img/smart/intro/INTPIB_ALL_MAIN01/upup_int_01_0.png) no-repeat; margin:0 auto;background-position: 0 70%;">
+			<div class="ps-mobile-bank platform" style="background:#fff url(/bankJSPProject/image/main/upup_int_01_0.png) no-repeat; margin:0 auto;background-position: 0 70%;">
 				<span class="ps-btn"><a class="ml0" href='https://spot.wooribank.com/pot/Dream?withyou=PODEP0019&cc=c007095:c009166;c012263:c012399&PRD_CD=P010002355&PLM_PDCD=P010002355&ALL_GB=ALL'>자세히보기</a></span>
 			</div>
 		</div>
@@ -54,7 +63,7 @@
     
    	
 		<div class="ps-event-bx js-start-animation">
-			<div class="ps-main-event" style="position:relative;width: 950px;margin:0 auto;height:282px;background:url(/img/smart/intro/INTPIB_ALL_MAIN02/dream.png) no-repeat;background-position: 45% 65%;">
+			<div class="ps-main-event" style="position:relative;width: 950px;margin:0 auto;height:282px;background:url(/bankJSPProject/image/main/dream.png) no-repeat;background-position: 45% 65%;">
 				<span class="ps-btn"><a class="ml0" href='https://spib.wooribank.com/pib/Dream?withyou=POLON0058&cc=c010528:c010531;c012425:c012399&PLM_PDCD=P020000072&PRD_CD=P020000072&HOST_PRD_CD=2013109131100'>자세히보기</a></span>
 			</div>
 		</div>
@@ -63,7 +72,7 @@
     
     
 		<div class="ps-con-bx1">
-			<div class="ps-mobile-bank ps-mobile-bank-detail" style="background:#fff url(/img/smart/intro/INTPIB_ALL_MAIN03/up2.png) no-repeat; width:950px;margin:0 auto;">
+			<div class="ps-mobile-bank ps-mobile-bank-detail" style="background:#fff url(/bankJSPProject/image/main/up2.png) no-repeat; width:950px;margin:0 auto;">
 				<div class="hidden">
                 	<h2>원터치 알림</h2>
                 	<p>별도의 수수료 없이 무료로 입/출금 내역 등 금융정보를 실시간으로 푸시(PUSH)메시지로 받고 전자금융 사기 예방 및 월900원, 년간 10,800원 절약하세요!</p>

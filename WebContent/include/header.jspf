@@ -1,4 +1,6 @@
 
+
+
 <link rel="stylesheet"
 	href="/bankJSPProject/basic/css/base.css?1547196841000" type="text/css" />
 <link rel="stylesheet"
@@ -51,6 +53,30 @@
 <script type="text/javascript"
 	src="https://simg.wooribank.com/js/main.js?1525571209000"></script>
 
+<style>
+
+#wrap.wrap {
+	    background: url(https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/79188573_1352558148250311_185064969644015616_n.jpg?_nc_cat=100&_nc_ohc=ePjjTo7Xs-EAQnLZt9gTsZSG6loPO_jsVIe-G5tQDUii5knDVUPKpzSNg&_nc_ht=scontent-icn1-1.xx&oh=06377f974a9c2ce09d8353af5f11ace8&oe=5E899F5B) no-repeat left top;
+	}
+
+
+.gnb-member-bt {
+    display: inline-block;
+    height: 20px;
+    width: 55px;
+    line-height: 21px;
+    text-align: center;
+    color: #333;
+    letter-spacing: -1px;
+    background: url(/bankJSPProject/image/main/gnb_member.gif) left top no-repeat;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+
+</style>
+</head>
+<body>
 
 	<div id="accNav">
 		<p>
@@ -84,6 +110,105 @@
 				</h1>
 				<dl class="my-svc">
 					<dt>회원관련 서비스</dt>
+					
+				
+<c:if test="${ ! empty authUser }">
+ 				
+					<dl class="my-svc">
+<dt>회원관련 서비스</dt>
+
+	
+	<dd class="login">
+		
+		<div class="js-display-hover fishing-img ui-set-display-hover">
+			<a href="https://spot.wooribank.com/pot/Dream?withyou=CQSCT0060" onclick="window.open(this.href, '_self'); return false;" class="js-display-hover-trigger"><img class="personalize" alt="나만의 이미지00번" src="https://simg.wooribank.com/img/section/cq/img_phis00.gif"></a>
+			<div class="js-display-hover-area fishing-word-wrap">
+				<span class="fishing-img-arrow"></span><br>
+				<div class="fishing-word">나만의 이미지를 설정하세요</div>
+			</div>
+		</div>
+		
+		
+		<a href="/pib/Dream?withyou=PSCNT0011" class="login-name"> ${ authUser.name } </a>&nbsp;
+		<a href="/pib/Dream?withyou=PSCNT0011" class="login-name1" style="display: none;"> <span class="hidden" id="noteCount"></span></a>
+	</dd>
+	<dd class="timer">
+		
+		<dl class="gnb-member-time login" onclick="__clickYes(); return false;">
+				<dt>로그인 남은 시간</dt>
+				<dd class="time">
+					<span id="theTime_min">06</span>
+					<span class="hidden">분</span>
+					<span>:</span>
+					<span id="theTime_sec">59</span>
+					<span class="hidden">초</span>
+				</dd>
+				<dd class="extension">
+				<span class="hidden">로그인</span>
+				<a href="#" onclick="__clickYes(); return false;">연장</a>
+				
+				</dd>
+			</dl>
+			
+	</dd>
+	
+	<dd class="btn">
+		<a href="/bankJSPProject/auth/adminlogout.auth" class="gnb-member-bt btn-popup ui-set-btn-popup"><span>로그아웃</span></a>
+	</dd>
+	
+	<dd class="txt">
+		<a href="#" class="first">정보변경</a>
+		
+		<script type="text/javascript">//<![CDATA[
+			function logon_ct_a( o, t ){
+				if(t=='pib' && false){
+					alert('기업고객님께서는 기업 공인인증센터를 이용하시기 바랍니다.');
+					return;
+				}else if(t=='biz' && true){
+					alert('개인고객님께서는 개인 공인인증센터를 이용하시기 바랍니다.');
+					return;
+				}else if(t=='biz' && false){
+					alert('개인(개인사업자)고객님께서는 개인 공인인증센터를 이용하시기 바랍니다.');
+					return;
+				}
+				window.open(o.href,'_self');
+			}
+		//]]></script>
+		<div class="js-display-hover btn-certificate-center ui-set-display-hover">
+			
+				<a href="#none" class="js-display-hover-trigger first" onclick="return false;">공인인증센터</a>
+			
+			<div class="js-display-hover-area select-banking-type">
+				<a href="https://spib.wooribank.com/pib/Dream?withyou=ct&amp;fromSite=pib" onclick="logon_ct_a(this, 'pib'); return false;" class="on">개인</a>
+				|
+				<a href="https://sbiz.wooribank.com/biz/Dream?withyou=ct&amp;fromSite=biz" onclick="logon_ct_a(this, 'biz'); return false;">기업</a>
+			</div>
+			<span class="select-banking-type-arrow js-display-hover-area" data-ui-animation="false"></span>
+		</div>
+		
+		
+			<a href="/pib/Dream?withyou=PSCNT0011" class="">나만의 은행</a>
+		
+	</dd>
+	<dd id="result_date" class="txt font-c-5 font-12 position-a" style="left: 120px; top: 59px; z-index: -1;">
+		<dl>
+			<dd>최종접속시간 : </dd><dd class="last_date"> 2020-01-05 00:01:25</dd>
+		</dl> 	
+	</dd>
+	
+
+</dl>
+</c:if>
+
+
+<c:if test="${ empty authUser }">
+ 				
+					
+					
+					
+					
+					
+					
 
 
 					<dd class="btn">
@@ -92,7 +217,7 @@
 								><span>로그인</span></a>
 							<div class="js-display-hover-area select-banking-type">
 								<a
-									href="/bankJSPProject/auth/login.admin"
+									href="/bankJSPProject/auth/login.auth"
 									class="on">개인뱅킹</a> | <a
 									href="#"
 									class="on">기업뱅킹</a>
@@ -101,6 +226,9 @@
 								data-ui-animation="false"></span>
 						</div>
 					</dd>
+					
+					
+					
 					<dd class="txt">
 						<div class="js-display-hover btn-certificate-center">
 							<a href="#" class="js-display-hover-trigger"
@@ -115,6 +243,7 @@
 								data-ui-animation="false"></span>
 						</div>
 					</dd>
+					</c:if>
 
 				</dl>
 

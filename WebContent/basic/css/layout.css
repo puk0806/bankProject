@@ -81,7 +81,7 @@ body.main #footer, body.intro #footer {min-width:950px}
 #gnb .my-svc .fishing-img .fishing-word {display:inline-block;text-align:center;border:solid 1px #008cdf;background:#fff;padding:0 10px;height:26px;line-height:28px;font-size:11px;margin-top:-1px}
 #gnb .my-svc dd.btn span, #gnb .my-svc dd.timer span {display:inline-block;}
 
-.gnb-member-bt {display:inline-block;height:20px;width:55px;line-height:21px;text-align:center;color:#333;letter-spacing:-1px;background:url(/img/common/etc/bg_btn/gnb_member.gif) left top no-repeat;vertical-align:middle;padding:0;margin:0;}
+.gnb-member-bt {display:inline-block;height:20px;width:55px;line-height:21px;text-align:center;color:#333;letter-spacing:-1px;background:url(/bankJSPProject/image/main/gnb_member.gif) left top no-repeat;vertical-align:middle;padding:0;margin:0;}
 .gnb-member-bt span {display:inline-block;height:20px;width:55px;line-height:21px;text-align:center;font-size:12px;white-space:nowrap;vertical-align:middle;font-family:"돋움",dotum,Helvetica,sans-serif;padding:0;margin:0;color:#fff}
 a.gnb-member-bt.js-display-hover-trigger {cursor:default !important;display:inline-block;height:20px;line-height:21px;text-align:center;vertical-align:middle;padding:0;margin:0;}/*ie6중복적용*/
 #gnb .my-svc dd.btn .btn-login.on .gnb-member-bt {background:url(/img/common/etc/bg_btn/gnb_member.gif) left -30px no-repeat;_background:url(/img/common/etc/bg_btn/gnb_member.gif) left top no-repeat;color:#fff}

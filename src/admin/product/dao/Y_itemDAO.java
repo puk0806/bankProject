@@ -25,9 +25,19 @@ public class Y_itemDAO {
 		return y_itemDao;
 	}
 
-	public List<Y_itemDTO> selectAll(Connection conn) {
-		String sql = "select * from y_item ";
+	public List<Y_itemDTO> selectAll(Connection conn,int startRow,int size) {
+		String sql = "select *            			 " + 
+					"from (                  		 " + 
+					"    select rownum no, t.*       " + 
+					"    from (                      " + 
+					"        select  * 				 " + 
+					"        from y_item             " + 
+					"        order by y_item_no desc " + 
+					"    ) t                         " + 
+					") b                             " + 
+					"where b.no between ? and ?      ";
 		PreparedStatement pstmt = null;
+
 		ResultSet rs = null;
 		
 		ArrayList<Y_itemDTO> list = new ArrayList<Y_itemDTO>();
@@ -35,9 +45,10 @@ public class Y_itemDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, startRow+size-1);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				System.out.println("상품 존재");
 				y_itemDto = new Y_itemDTO(rs.getString("y_item_no")
 										,I_kind_rcDAO.getInstance().getItem_kind(conn, rs.getString("i_kind_rc_no"))
 										,I_type_rfsDAO.getInstance().getItem_type(conn, rs.getString("i_type_rfs_no"))
@@ -74,8 +85,13 @@ public class Y_itemDAO {
 		return list;
 	}
 
-	public List<Y_itemDTO> selectSearch(Connection conn, int searchCondition, String searchWord) {
-		String sql = "select * from y_item ";
+	public List<Y_itemDTO> selectSearch(Connection conn, int searchCondition, String searchWord,int startRow,int size) {
+		String sql = "select *            			 " + 
+				"from (                  		 " + 
+				"    select rownum no, t.*       " + 
+				"    from (                      " + 
+				"        select  * 				 " + 
+				"        from y_item             ";
 		
 		switch (searchCondition) {
 		case 1 :	
@@ -86,6 +102,11 @@ public class Y_itemDAO {
 			break;
 		}
 		
+		sql += "        order by y_item_no desc " + 
+				"    ) t                         " + 
+				") b                             " + 
+				"where b.no between ? and ?      ";
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -95,6 +116,8 @@ public class Y_itemDAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchWord);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, startRow+size-1);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				System.out.println("상품 존재");
@@ -210,6 +233,64 @@ public class Y_itemDAO {
 			JdbcUtil.close(pstmt);
 		}
 		return list;
+	}
+
+	public int count(Connection conn) {
+		String sql = "select count(*) cnt from y_item ";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int total = 0;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				total = rs.getInt("cnt");
+			}
+			return total;
+		}  catch (SQLException e) {
+			System.out.println("y_itemDAO count예외");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return total;
+	}
+	
+	public int count(Connection conn, int searchCondition, String searchWord) {
+		String sql = "select count(*) cnt from y_item ";
+		
+		switch (searchCondition) {
+		case 1 :	
+			sql+= " where regexp_like(yegeum_item_name, ? ,'i') ";
+			break;
+		case 2 :	
+			sql +=" where regexp_like(outlines, ? ,'i') ";
+			break;
+		}
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int total = 0;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchWord);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				total = rs.getInt("cnt");
+			}
+			return total;
+		}  catch (SQLException e) {
+			System.out.println("y_itemDAO count예외");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return total;
 	}
 
 

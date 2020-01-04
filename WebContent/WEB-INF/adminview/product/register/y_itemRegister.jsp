@@ -37,7 +37,7 @@
 	예금기간 :<input name="yegeum_item_length" value="1,24" > <br> 
 	가입제한금액 :<input name="yegeum_item_limitmoney" value="210000000" > <br>
 	우대금리여부 :<input name="treat_interest_check_exp" value="WON통장, 우리꿈통장을 기본계좌로 하고 이 적금을 연결가입하는 경우 0.2%" > <br>
-	이자지급방법 :<input name="interest_pay_method" value="만기일시지급식" > <br> 
+	이자지급방법 :<input name="interest_payment_method" value="만기일시지급식" > <br> 
 	만기시해제방법 :<input name="end_terminate_method" value="고객직접해지" > <br> 
 	개요 : <input name="outlines" value="가입기간도 금액도 자유롭게 만기해지시 금리는 2배" > <br>
 	특징 : <input name=yegeum_feature value="만기를 선택하여 자유롭게 가입이 가능 해당기간별 높은금리 제공" > <br>

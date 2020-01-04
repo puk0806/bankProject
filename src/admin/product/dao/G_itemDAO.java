@@ -27,8 +27,18 @@ private static G_itemDAO g_itemDao = null;
 		return g_itemDao;
 	}
 
-	public List<G_itemDTO> selectAll(Connection conn) {
-		String sql = "select * from g_item ";
+	public List<G_itemDTO> selectAll(Connection conn,int startRow,int size) {
+		String sql = "select *            			 " + 
+				"from (                  		 " + 
+				"    select rownum no, t.*       " + 
+				"    from (                      " + 
+				"        select  * 				 " + 
+				"        from g_item             " + 
+				"        order by g_item_no desc " + 
+				"    ) t                         " + 
+				") b                             " + 
+				"where b.no between ? and ?      ";
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -37,6 +47,8 @@ private static G_itemDAO g_itemDao = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, startRow+size-1);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				g_itemDto = new G_itemDTO(rs.getString("g_item_no")
@@ -73,9 +85,17 @@ private static G_itemDAO g_itemDao = null;
 		return list;
 	}
 
-	public List<G_itemDTO> selectSearch(Connection conn, int searchCondition, String searchWord) {
-
-		String sql = "select * from g_item ";
+	public List<G_itemDTO> selectSearch(Connection conn, int searchCondition, String searchWord,int startRow,int size) {
+		
+		
+		String sql = "select *            			 " + 
+				"from (                  		 " + 
+				"    select rownum no, t.*       " + 
+				"    from (                      " + 
+				"        select  * 				 " + 
+				"        from g_item             " ; 
+				
+		
 		switch (searchCondition) {
 		case 1 :	
 			sql+= " where regexp_like(g_item_name, ? ,'i') ";
@@ -84,6 +104,11 @@ private static G_itemDAO g_itemDao = null;
 			sql +=" where regexp_like(outlines, ? ,'i') ";
 			break;
 		}
+		sql += 	"        order by g_item_no desc " + 
+				"    ) t                         " + 
+				") b                             " + 
+				"where b.no between ? and ?      ";
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -93,6 +118,8 @@ private static G_itemDAO g_itemDao = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchWord);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, startRow+size-1);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				g_itemDto = new G_itemDTO(rs.getString("g_item_no")
@@ -203,6 +230,64 @@ private static G_itemDAO g_itemDao = null;
 		}
 		
 		return list;
+	}
+
+	public int count(Connection conn) {
+		String sql = "select count(*) cnt from g_item ";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int total = 0;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				total = rs.getInt("cnt");
+			}
+			return total;
+		}  catch (SQLException e) {
+			System.out.println("g_itemDAO count예외");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return total;
+	}
+
+	public int count(Connection conn, int searchCondition, String searchWord) {
+		String sql = "select count(*) cnt from g_item ";
+		switch (searchCondition) {
+		case 1 :	
+			sql+= " where regexp_like(g_item_name, ? ,'i') ";
+			break;
+		case 2 :	
+			sql +=" where regexp_like(outlines, ? ,'i') ";
+			break;
+		}
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int total = 0;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchWord);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				total = rs.getInt("cnt");
+			}
+			return total;
+		}  catch (SQLException e) {
+			System.out.println("g_itemDAO count예외");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return total;
 	}
 
 

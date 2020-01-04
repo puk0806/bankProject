@@ -40,8 +40,6 @@ public class ItemInfoHandler implements CommandHandler{
 		String item_no = trim(request.getParameter("item_no")); 
 		String type = command.substring(0,command.length()-6);
 		
-		System.out.println("command : "+command);
-		System.out.println("type : "+type);
 		if(type.equals("g_item")) {
 			List<G_itemDTO> g_itemList = service.g_itemDetailSearch(item_no);
 			request.setAttribute("g_itemList", g_itemList);
