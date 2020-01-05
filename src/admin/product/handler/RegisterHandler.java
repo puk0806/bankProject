@@ -40,10 +40,11 @@ public class RegisterHandler implements CommandHandler{
 		try {
 			String location = "/bankJSPProject/product/"+command+".admin";
 			System.out.println("location : "+location);
+			System.out.println("command : 	"+command);
 			
 			ProductRegisterService service = new ProductRegisterService();
 			if(command.equals("y_item")) {
-				
+				System.out.println("실행");
 				String st_type_no = request.getParameter("st_type_no");
 				String t_profit_no = request.getParameter("t_profit_no");
 				String yegeum_item_name = request.getParameter("yegeum_item_name");
@@ -61,7 +62,7 @@ public class RegisterHandler implements CommandHandler{
 				String[] sign_method = request.getParameterValues("sign_method");
 				int commission_total_count = Integer.parseInt(request.getParameter("commission_total_count"));
 				String available_chan = request.getParameter("available_chan");
-				
+				System.out.println(" yegeum_feature : "+ yegeum_feature);
 				service.y_itemRegister(st_type_no,t_profit_no,yegeum_item_name,yegeum_interest,yegeum_item_length
 										,yegeum_item_limitmoney,treat_interest_check_exp,interest_payment_method
 										,end_terminate_method,outlines,yegeum_feature

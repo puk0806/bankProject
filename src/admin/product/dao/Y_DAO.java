@@ -80,6 +80,7 @@ public class Y_DAO {
 			String yegeum_feature, String yegeumer_protect_check, String yegeumer_protect_content, String sign_target,
 			String sign_method, int commission_total_count,String available_chan) {
 		
+		System.out.println("yegeum feature : "+yegeum_feature);
 		String sql = "insert into y_item values('YI'||seq_y_item.nextval,'IK1000','ITR1000','PS1000',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?  )";
 		PreparedStatement pstmt = null;
 		
@@ -107,7 +108,7 @@ public class Y_DAO {
 			pstmt.executeUpdate();
 	
 		} catch (SQLException e) {
-			System.out.println("y_DAO isnertProduct예외");
+			System.out.println("y_DAO insertProduct예외");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(pstmt);

@@ -83,7 +83,7 @@
 				<!-- content_common -->
 				
 <div class="title-area clearfix" id="contentTitle">
-	<h2 class="fleft">적금상품수정</h2>
+	<h2 class="fleft">적금상품등록</h2>
 </div>   
 
   

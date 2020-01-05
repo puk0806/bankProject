@@ -130,13 +130,13 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
 
 <div id="container" class="snb-padding bg_gray">
 <div class="title-area clearfix" id="contentTitle">
-	<h2 class="fleft">적금상품</h2>
+	<h2 class="fleft">예금신규가입</h2>
 </div>   
 
 <div id="content">
 <script type="text/javascript" src="https://simg.wooribank.com/js/mall/accChecker.js?1364287758000"></script>
 <div class="product-search">
-  <form id="form1" action="/bankJSPProject/product/s_item.admin" method="post">
+  <form id="frm_search" name="frm_search" class="ajax-form" method="post" action="https://spib.wooribank.com/pib/jcc?withyou=PSDEP0010&__ID=c007656" data-target="#resultArea" data-pre-submit="searchList();" data-no-ajax="false">
         <input type="hidden" id="alignGb"    name="alignGb"       value="RCM" />
         <input type="hidden" id="PRD_CD_SCH" name="PRD_CD_SCH"    value="" />
         <input type="hidden" id="NowPage"    name="NowPage"       value="" />
@@ -154,12 +154,19 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
         <input type="hidden" id="startCC"   name=""   />
 <fieldset>
 <div id="standardSearchArea" class="standard-search-area">    
-     <select name="searchCondition" id="searchCondition">
-            <option value="1" selected="selected">상품명</option>
-            <option value="2">상품설명</option>
-         </select>
+<select title="예금종류 선택" id="depKind" name="depKind" class="w150 ml3">
+    <option value="">예금종류 선택</option>
+    <option value="03">목돈굴리기상품</option>
+    <option value="04">목돈모으기상품</option>
+    <option value="05">주택청약상품</option>
+    <option value="06">지수연동상품</option>
+    <option value="07">절세상품</option>
+    <option value="08">자유입출금상품</option>
+    <option value="09">외화예금상품</option>
+    <option value="10">기업전용상품</option>
+</select>
 
-<label for="prdName" class="ml10">상품명 <input type="text" name="searchWord" id="searchWord" value="${ searchWord }"></label>
+<label for="prdName" class="ml10">상품명 <input type="text" id="prdName" name="prdName" value="" class="w200 ml5" title="상품명 입력"/></label>
 <label for="intnPrd1" class="ml10"><input type="checkbox" id="intnPrd1" name="intnPrd" value="1"/> 인터넷</label>
 <label for="intnPrd2" class="ml10"><input type="checkbox" id="intnPrd2" name="intnPrd" value="2"/> 영업점</label>
 <label for="intnPrd3" class="ml10"><input type="checkbox" id="intnPrd3" name="intnPrd" value="3"/> 스마트폰</label>
@@ -312,7 +319,7 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
 
 <div class="product-result-info-area mt30">
     <div class="info-l">
-        <span class="fleft"><strong id="TOT_CNT_TXT">${page.getTotal() }'</strong>개의 적금상품이 검색되었습니다. </span>
+        <span class="fleft"><strong id="TOT_CNT_TXT">5</strong>개의 예금상품이 검색되었습니다. </span>
         <span class="fleft">&nbsp;(조회기준일 : 
         <% Date now = new Date(); 
            SimpleDateFormat test = new SimpleDateFormat("yyyy-MM-dd");
@@ -337,8 +344,8 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
 <!-- 시작   -->
 
 
-<c:if test="${not empty s_itemList}">
-<c:forEach items="${s_itemList }" var="dto">
+<c:if test="${not empty y_itemList}">
+<c:forEach items="${y_itemList }" var="dto">
 
 <!-- 링크시작 -->
 <form id="frmResult" name="frmResult" method="post" action="/bankJSPProject/deposittrust/deposittrustnew/depositTrustNewSign.do"><div class="nppfs-elements"></div>
@@ -347,11 +354,11 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
 			            <div class="prd-info pr70 w49p">		                
 			                <dl>
 			                    <dt class="name">
-			                    <a href="/bankJSPProject/product/s_itemDetail.admin?item_no=${dto.s_item_no}" >${dto.saving_item_name}</a></dt>
+			                    <a href="/bankJSPProject/deposittrust/deposittrustnew/depositTrustNewSign.do?name=${dto.yegeum_item_name}&num=${dto.y_item_no}&yegeum_feature=${dto.yegeum_feature}&interest=${dto.yegeum_interest}" onclick="goDetails(1 , 'P010002353' );">${dto.yegeum_item_name}</a></dt>
 								<dd class="tit">
 					            	<em class="mr10">${dto.outlines }</em>
 				                </dd>
-			                    <dd class="dsc" title="">${dto.saving_feature } <br>
+			                    <dd class="dsc" title="">${dto.yegeum_feature } <br>
 								</dd>
 			                    <dd class="foot">
 			                        <ul> 
@@ -361,16 +368,16 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
 										${sign_method}
 			                            </li>
 										</c:forEach>
-			                            <li><a href="#" class="btn-popup ui-set-btn-popup">금리보기</a></li>
-			                             <li><a href="#" class="btn-popup ui-set-btn-popup">미리보기</a></li>
+			                            <li><a href="/pib/jcc?withyou=PSDEP0010&amp;__ID=c009165&amp;PRD_CD=P010002353&amp;PLM_PDCD=P010002353" class="btn-popup ui-set-btn-popup">금리보기</a></li>
+			                             <li><a href="/pib/jcc?withyou=PSDEP0010&amp;__ID=c010358&amp;PRD_CD=P010002353&amp;PLM_PDCD=P010002353&amp;PRD_YN=Y&amp;pPRD_DSCD=01" class="btn-popup ui-set-btn-popup">미리보기</a></li>
 			                        </ul>
 			                    </dd>
 			                </dl>
 			            </div>
 						<div class="prd-pct-bg">
 						<p class="txt1">최고 연</p>
-						<p class="txt2">${dto.savng_interest * 1.5}<span class="txt2-1">%</span></p>
-			                       <p class="txt3">기본 ${dto.savng_interest}%</p>
+						<p class="txt2">${dto.yegeum_interest * 1.5}<span class="txt2-1">%</span></p>
+			                       <p class="txt3">기본 ${dto.yegeum_interest}%</p>
 									
 						</div>
 			            <div class="prd-btn">
@@ -378,13 +385,19 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
 			                <c:set var="sign_method1" value="${dto.sign_method }"></c:set>
 							<c:forEach items="${fn:split(sign_method1, ',') }" var="sign_method">
 				                <span class=" btn-pack btn-type-3 btn-no ui-set-btn-pack ui-set-btn-pack-event">
+				                <c:if test="${fn:contains(sign_method, '인터넷')}" >
+				                <span class="" style="height:36px;" onclick="location.href='/bankJSPProject/deposittrust/deposittrustnew/depositTrustNewSign.do?name=${dto.yegeum_item_name}&num=${dto.y_item_no}&yegeum_feature=${dto.yegeum_feature}&interest=${dto.yegeum_interest}'">${sign_method}가입</span>
+				                </c:if>
+				                <c:if test="${sign_method ne '인터넷'}">
+				                <span class="" style="height:36px;">${sign_method}가입</span>
+				                </c:if>
 				                </span>
 			                </c:forEach>			                
-	                            <span class=" btn-pack btn-type-3 ui-btn-pack-a ui-set-btn-pack ui-set-btn-pack-event"><a href="/bankJSPProject/product/s_itemDetail.admin?item_no=${dto.s_item_no}" onclick="goDetails(1 , 'P010002353' );" class="">상세보기</a></span>
+	                            <span class=" btn-pack btn-type-3 ui-btn-pack-a ui-set-btn-pack ui-set-btn-pack-event"><a href="#none" onclick="goDetails(1 , 'P010002353' );" class="">상세보기</a></span>
 	                        </div>
 			                <div class="prd-ico-area">
-				                <a href="#none" onclick="wbFavorPrdBox.init('1').put('P010002353', '');" class="btn-put-ico-1 js-display-on-off" data-show=".put-tooltip-1" data-ui-showonhover="true"><span class="hidden">${dto.saving_item_name}</span>관심상품등록<span class="tooltip-pack-2 put-tooltip-1">관심상품등록</span></a>
-				                <a href="#none" onclick="wbCmpPrdBox.init('Dep').put('cmpFinPrdCookieid', 'P010002353', 'WON 적금');" class="btn-compare-ico-1 js-display-on-off" data-show=".compare-tooltip-1" data-ui-showonhover="true"><span class="hidden">${dto.saving_item_name}</span>비교함담기<span class="tooltip-pack-2 compare-tooltip-1">비교함담기</span></a>
+				                <a href="#none" onclick="wbFavorPrdBox.init('1').put('P010002353', '');" class="btn-put-ico-1 js-display-on-off" data-show=".put-tooltip-1" data-ui-showonhover="true"><span class="hidden">${dto.yegeum_item_name}</span>관심상품등록<span class="tooltip-pack-2 put-tooltip-1">관심상품등록</span></a>
+				                <a href="#none" onclick="wbCmpPrdBox.init('Dep').put('cmpFinPrdCookieid', 'P010002353', 'WON 적금');" class="btn-compare-ico-1 js-display-on-off" data-show=".compare-tooltip-1" data-ui-showonhover="true"><span class="hidden">${dto.yegeum_item_name}</span>비교함담기<span class="tooltip-pack-2 compare-tooltip-1">비교함담기</span></a>
 			                </div>
 			            </div>
 			        </div>
@@ -397,160 +410,87 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
 </c:if>
 
 
-<table>
-	<c:if test="${page.hasArticles()}">
-		<c:if test="${! empty searchCondition }">
-			검색기록 존재
-			<tr>
-				<td colspan="4">
-					<c:if test="${page.startPage > 5}">
-						<input type="submit" id="sub1" value="[이전]">
-					</c:if>
-					<c:forEach var="pNo" 
-							   begin="${page.startPage}" 
-							   end="${page.endPage}">
-					<input type="submit" name="sub2" value="${pNo}">
-					
-					</c:forEach>
-					<c:if test="${page.endPage < page.totalPages}">
-					<input type="submit" id="sub3" value="[다음]">
-					</c:if>
-				</td>
-			</tr>
-			
-		</c:if>
-	
-	
-		<c:if test="${empty searchCondition }">
-			검색기록 존재X
-			<tr>
-				<td colspan="4">
-					<c:if test="${page.startPage > 5}">
-					<a href="/bankJSPProject/product/s_item.admin?pageNo=${page.startPage - 5}">[이전]</a>
-					</c:if>
-					
-					<c:forEach var="pNo" 
-							   begin="${page.startPage}" 
-							   end="${page.endPage}">
-					<a href="/bankJSPProject/product/s_item.admin?pageNo=${pNo}">[${pNo}]</a>
-					</c:forEach>
-					
-					<c:if test="${page.endPage < page.totalPages}">
-					<a href="/bankJSPProject/product/s_item.admin?pageNo=${page.startPage + 5}">[다음]</a>
-					</c:if>
-				</td>
-			</tr>
-		</c:if>
-	</c:if>
+
+<!-- 적금 -->
+<c:forEach items="${s_itemList }" var="dto2">
+
+<form id="frmResult" name="frmResult" method="post" action="/bankJSPProject/deposittrust/deposittrustnew/savingFirstStep.do"><div class="nppfs-elements"></div>
+   <div class="product-list">
+	<div class="product clearfix">
+			            <div class="prd-info pr70 w49p">		                
+			                <dl>
+			                    <dt class="name">
+			                    <a href="/bankJSPProject/deposittrust/deposittrustnew/savingFirstStep.do?name=${dto2.saving_item_name}&num=${dto2.s_item_no}&saving_feature=${dto2.saving_feature}&interest=${dto2.savng_interest}" onclick="goDetails(1 , 'P010002353' );">${dto2.saving_item_name}</a></dt>
+								<dd class="tit">
+					            	<em class="mr10">${dto2.outlines }</em>
+				                </dd>
+			                    <dd class="dsc" title="">${dto2.saving_feature } <br>
+								</dd>
+			                    <dd class="foot">
+			                        <ul> 
+			                            <c:set var="sign_method1" value="${dto2.sign_method }"></c:set>
+										<c:forEach items="${fn:split(sign_method1, ',') }" var="sign_method">
+			                            <li>
+										${sign_method}
+			                            </li>
+										</c:forEach>
+			                            <li><a href="/pib/jcc?withyou=PSDEP0010&amp;__ID=c009165&amp;PRD_CD=P010002353&amp;PLM_PDCD=P010002353" class="btn-popup ui-set-btn-popup">금리보기</a></li>
+			                             <li><a href="/pib/jcc?withyou=PSDEP0010&amp;__ID=c010358&amp;PRD_CD=P010002353&amp;PLM_PDCD=P010002353&amp;PRD_YN=Y&amp;pPRD_DSCD=01" class="btn-popup ui-set-btn-popup">미리보기</a></li>
+			                        </ul>
+			                    </dd>
+			                </dl>
+			            </div>
+						<div class="prd-pct-bg">
+						<p class="txt1">최고 연</p>
+						<fmt:formatNumber value="${dto2.savng_interest * 1.5 }" pattern=".00" var="savng_interest"/>
+						<p class="txt2">${savng_interest}<span class="txt2-1">%</span></p>
+			                       <p class="txt3">기본 ${dto2.savng_interest}%</p>
+									
+						</div>
+			            <div class="prd-btn">
+			                <div class="prd-btn-area mr40">
+			                <c:set var="sign_method1" value="${dto2.sign_method }"></c:set>
+							<c:forEach items="${fn:split(sign_method1, ',') }" var="sign_method">
+				                <span class=" btn-pack btn-type-3 btn-no ui-set-btn-pack ui-set-btn-pack-event">
+				                <c:if test="${fn:contains(sign_method, '인터넷')}" >
+				                <span class="" style="height:36px;" onclick="location.href='/bankJSPProject/deposittrust/deposittrustnew/savingFirstStep.do?name=${dto2.saving_item_name}&num=${dto2.s_item_no}&saving_feature=${dto2.saving_feature}&interest=${dto2.savng_interest}'">${sign_method}가입</span>
+				                </c:if>
+				                <c:if test="${sign_method ne '인터넷'}">
+				                <span class="" style="height:36px;">${sign_method}가입</span>
+				                </c:if>
+				                </span>
+			                </c:forEach>			                
+	                            <span class=" btn-pack btn-type-3 ui-btn-pack-a ui-set-btn-pack ui-set-btn-pack-event"><a href="#none" onclick="goDetails(1 , 'P010002353' );" class="">상세보기</a></span>
+	                        </div>
+			                <div class="prd-ico-area">
+				                <a href="#none" onclick="wbFavorPrdBox.init('1').put('P010002353', '');" class="btn-put-ico-1 js-display-on-off" data-show=".put-tooltip-1" data-ui-showonhover="true"><span class="hidden">${dto2.saving_item_name}</span>관심상품등록<span class="tooltip-pack-2 put-tooltip-1">관심상품등록</span></a>
+				                <a href="#none" onclick="wbCmpPrdBox.init('Dep').put('cmpFinPrdCookieid', 'P010002353', 'WON 적금');" class="btn-compare-ico-1 js-display-on-off" data-show=".compare-tooltip-1" data-ui-showonhover="true"><span class="hidden">${dto2.saving_item_name}</span>비교함담기<span class="tooltip-pack-2 compare-tooltip-1">비교함담기</span></a>
+			                </div>
+			            </div>
+			        </div>
+					</div>
+</form>
+
+</c:forEach>
 </table>
 
+</div>
+</div>
+</div>
+<jsp:include page="/include/footer.jspf"></jsp:include>
 
 
-
-
-
-
-
-
-
-
-
-
-
-<c:if test="${empty s_itemList }">
-	<h4>상품이 없습니다.</h4>
-</c:if>
-<c:if test="${not empty s_itemList }">
-	<c:forEach items="${s_itemList }" var="dto">
-		상품명 : ${dto.saving_item_name } <br>
-		상품종류 : ${dto.item_kind } <br>
-		상품유형: ${dto.item_type } <br>
-		가입대상 : ${dto.st_sign_target } <br>
-		금리 : ${dto.savng_interest } <br>
-		가입최대금액 : ${dto.saving_item_maxmoney } <br>
-		개요  : ${dto.outlines } <br>
-		<a href="/bankJSPProject/product/s_itemDetail.admin?item_no=${dto.s_item_no}">자세히 보기</a>
-		<br>
-		
-		
-	</c:forEach>
-</c:if>
-
-<form action="/bankJSPProject/product/s_item.admin" method="post">
-
-<table>
-	<c:if test="${page.hasArticles()}">
-		<c:if test="${! empty searchCondition }">
-			검색기록 존재
-			<tr>
-				<td colspan="4">
-					<c:if test="${page.startPage > 5}">
-						<input type="submit" id="sub1" value="[이전]">
-					</c:if>
-					<c:forEach var="pNo" 
-							   begin="${page.startPage}" 
-							   end="${page.endPage}">
-					<input type="submit" name="sub2" value="${pNo}">
-					
-					</c:forEach>
-					<c:if test="${page.endPage < page.totalPages}">
-					<input type="submit" id="sub3" value="[다음]">
-					</c:if>
-				</td>
-			</tr>
-			
-		</c:if>
-	
-	
-		<c:if test="${empty searchCondition }">
-			검색기록 존재X
-			<tr>
-				<td colspan="4">
-					<c:if test="${page.startPage > 5}">
-					<a href="/bankJSPProject/product/s_item.admin?pageNo=${page.startPage - 5}">[이전]</a>
-					</c:if>
-					
-					<c:forEach var="pNo" 
-							   begin="${page.startPage}" 
-							   end="${page.endPage}">
-					<a href="/bankJSPProject/product/s_item.admin?pageNo=${pNo}">[${pNo}]</a>
-					</c:forEach>
-					
-					<c:if test="${page.endPage < page.totalPages}">
-					<a href="/bankJSPProject/product/s_item.admin?pageNo=${page.startPage + 5}">[다음]</a>
-					</c:if>
-				</td>
-			</tr>
-		</c:if>
-	</c:if>
-</table>
-
-
-         <select name="searchCondition" id="searchCondition">
-            <option value="1" selected="selected">상품명</option>
-            <option value="2">상품설명</option>
-         </select>
-         <script>
-         </script>
-         <input type="text" name="searchWord" id="searchWord" value="${ searchWord }">
-         <input type="submit" value="search">
-      </form>  
-
-<script>
 <script>
 $(function(){
-	$("#searchCondition").val('${searchCondition }').prop("selected",true);
-	
-	$(":input[name=sub2]").click(function(){
-		alert($(this).val());
-		var pageNo;
-		pageNo.setAttribute('name','pageNo');
-		pageNo.setAttribute('value',$(this).val());
-		alert(pageNo);
-		$('#form1').append(pageNo);
-	});
 	
 });
 </script>
+
 </body>
 </html>
+
+
+
+
+
+

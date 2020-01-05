@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+
 <!-- </head>
 <body> -->
 <jsp:include page="/include/header.jspf"></jsp:include>

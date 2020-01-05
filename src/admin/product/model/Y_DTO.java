@@ -55,7 +55,7 @@ public class Y_DTO {
 		this.sign_method = sign_method;
 		this.commission_total_count = commission_total_count;
 	}
-
+	
 	public String getY_item_no() {
 		return y_item_no;
 	}
