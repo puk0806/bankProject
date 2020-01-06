@@ -14,6 +14,7 @@ import admin.account.dao.L_bankDAO;
 import admin.product.dao.Ir_periodDAO;
 import admin.product.dao.M_ter_rDAO;
 import admin.product.dao.S_itemDAO;
+import admin.product.dao.Y_itemDAO;
 import admin.sign.model.Si_signDTO;
 import admin.sign.model.Y_signDTO;
 import admin.user.dao.U_infoDAO;
@@ -63,10 +64,12 @@ public class Si_signDAO {
 											,rs.getInt("end_day")
 											,rs.getInt("once_accum_money")
 											,rs.getString("deposit_account")
-											,rs.getInt("delay_accum_times"));
+											,rs.getInt("delay_accum_times")
+											,S_itemDAO.getInstance().getSavng_interest(conn,rs.getString("s_item_no")));
+				
 				if(rs.getString("employee_no")!=null) si_signDto.setEmployee_no(rs.getString("employee_no"));
 				if(Ses_typeDAO.getInstance().getSes_date(conn, rs.getString("ses_type_no"))!=0) si_signDto.setSes_date(Ses_typeDAO.getInstance().getSes_date(conn, rs.getString("ses_type_no")));
-				if(rs.getString("ir_period_no")!= null) si_signDto.setInterest(Ir_periodDAO.getInstance().getInterest(conn,rs.getString("ir_period_no")));
+				if(rs.getString("ir_period_no")!= null) si_signDto.setInterest(si_signDto.getInterest()*Ir_periodDAO.getInstance().getInterest(conn,rs.getString("ir_period_no")));
 				if(rs.getString("m_ter_r_no")!=null) si_signDto.setM_interest(M_ter_rDAO.getInstance().getInterest(conn, rs.getString("m_ter_r_no")));
 				if(rs.getInt("auto_transfer_date")!=0) si_signDto.setAuto_transfer_date(rs.getInt("auto_transfer_date"));
 				if(rs.getInt("tex_treat_goal_money")!=0) si_signDto.setTex_treat_goal_money(rs.getInt("tex_treat_goal_money"));
@@ -114,10 +117,11 @@ public class Si_signDAO {
 											,rs.getInt("end_day")
 											,rs.getInt("once_accum_money")
 											,rs.getString("deposit_account")
-											,rs.getInt("delay_accum_times"));
+											,rs.getInt("delay_accum_times")
+											,S_itemDAO.getInstance().getSavng_interest(conn,rs.getString("s_item_no")));
 				if(rs.getString("employee_no")!=null) si_signDto.setEmployee_no(rs.getString("employee_no"));
 				if(Ses_typeDAO.getInstance().getSes_date(conn, rs.getString("ses_type_no"))!=0) si_signDto.setSes_date(Ses_typeDAO.getInstance().getSes_date(conn, rs.getString("ses_type_no")));
-				if(rs.getString("ir_period_no")!= null) si_signDto.setInterest(Ir_periodDAO.getInstance().getInterest(conn,rs.getString("ir_period_no")));
+				if(rs.getString("ir_period_no")!= null) si_signDto.setInterest(si_signDto.getInterest()*Ir_periodDAO.getInstance().getInterest(conn,rs.getString("ir_period_no")));
 				if(rs.getString("m_ter_r_no")!=null) si_signDto.setM_interest(M_ter_rDAO.getInstance().getInterest(conn, rs.getString("m_ter_r_no")));
 				if(rs.getInt("auto_transfer_date")!=0) si_signDto.setAuto_transfer_date(rs.getInt("auto_transfer_date"));
 				if(rs.getInt("tex_treat_goal_money")!=0) si_signDto.setTex_treat_goal_money(rs.getInt("tex_treat_goal_money"));

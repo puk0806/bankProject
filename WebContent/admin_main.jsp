@@ -8,9 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-<h3>관리자 메인</h3>
-
+<body> 
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 
 <h4>
 <c:if test="${ ! empty authAdmin }">

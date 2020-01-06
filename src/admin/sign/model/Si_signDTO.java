@@ -33,7 +33,7 @@ public class Si_signDTO {
 		public Si_signDTO(String si_sign_no, String user_name, String account_number, String saving_item_name,
 				String item_type_name, String ps_type_no, String taxfree_type_name, String loc_bank_name,
 				String sns_end_service_type_name, String smart_bridge_type_name, String pledge_set_yn,
-				String ad_check_no, int end_day, int once_accum_money, String deposit_account, int delay_accum_times) {
+				String ad_check_no, int end_day, int once_accum_money, String deposit_account, int delay_accum_times,double interest) {
 			super();
 			this.si_sign_no = si_sign_no;
 			this.user_name = user_name;
@@ -51,6 +51,7 @@ public class Si_signDTO {
 			this.once_accum_money = once_accum_money;
 			this.deposit_account = deposit_account;
 			this.delay_accum_times = delay_accum_times;
+			this.interest = interest;
 		}
 
 		

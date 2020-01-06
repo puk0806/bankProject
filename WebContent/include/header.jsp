@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 
@@ -151,7 +154,7 @@
 	</dd>
 	
 	<dd class="btn">
-		<a href="/bankJSPProject/auth/adminlogout.auth" class="gnb-member-bt btn-popup ui-set-btn-popup"><span>로그아웃</span></a>
+		<a href="/bankJSPProject/auth/logout.auth" class="gnb-member-bt btn-popup ui-set-btn-popup"><span>로그아웃</span></a>
 	</dd>
 	
 	<dd class="txt">
@@ -197,6 +200,7 @@
 
 </dl>
 </c:if>
+
 
 
 <c:if test="${ empty authUser }">

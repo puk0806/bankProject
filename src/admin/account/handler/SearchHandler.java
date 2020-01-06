@@ -42,8 +42,13 @@ public class SearchHandler implements CommandHandler{
 		
 		if(command.equals("/accountAllSearch")) {
 			accountList = service.AllSearch();
-			request.setAttribute("accountList", accountList);
+		}else if(command.equals("/accountProductSearch")) {
+			String account_type_name = trim(request.getParameter("account_type_name"));
+			accountList = service.typeSearch(account_type_name);
 		}
+		
+		request.setAttribute("accountList", accountList);
+		
 		
 		return FORM_VIEW+command;
 	}
@@ -86,6 +91,7 @@ public class SearchHandler implements CommandHandler{
 				System.out.println("에러발생");
 				return FORM_VIEW+command;
 			}
+			
 			accountList = service.typeSearch(account_type_name);
 		}
 		

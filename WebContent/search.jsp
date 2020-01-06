@@ -439,35 +439,13 @@ vertical-align: middle;
 
 </style>
 </head>
+
 <body>
-<jsp:include page="/include/adminheader.jsp"></jsp:include>
-<form action="/bankJSPProject/account/accountProductSearch.admin" method="post">
-	<p>
-		통장 종류 : 
-		<select name="account_type_name">
-			<option>입출금</option>
-			<option>예금</option>
-			<option>적금</option>
-			<option>펀드</option>
-			<option>뮤추얼펀드</option>
-			<option>대출</option>
-			<option>외화</option>
-			<option>골드</option>
-			<option>보험</option>
-		</select>
-	</p>
-	<input type="submit" value="검색">
-	</form>
-
-
-<h3>adminview/user/userSearch.jsp</h3>
-
-
-
+<h3>search.jsp</h3>
 
 <div id="container" class="snb-padding bg_gray">
 <div class="title-area clearfix" id="contentTitle">
-	<h2 class="fleft">모든 계좌 조회</h2>
+	<h2 class="fleft">전계좌조회</h2>
 </div>
 
 
@@ -496,88 +474,128 @@ vertical-align: middle;
 
 <div id="tabDep_sub_top1" class="title-area clearfix mt30 data-hidden">
 
-	<h3 class="title-block">계좌</h3>
+	<h3 class="title-block">입출금</h3><div class="title-data">
+	<span class="down" id="totDep1">총잔액 : 
+	<c:forEach items="${ adetaillist }" var="dto">
+	<strong>${ dto.account_current_money }원</strong>
+	</c:forEach>
 	
-	<c:if test="${not empty accountList }">
-	<c:forEach items="${accountList }" var="dto">
-		
-	
-	<div class="title-data">
-
+	</span>
 	<span class="btn-open printnoa">
 	</span><!-- 
 	<a class="js-display-toggle ui-set-display-toggle on" onclick="onDepOpenSet('tabDep_sub1');" data-target="#tabDep_sub1" href="#tabDep_sub1">입출금 닫기</a>
 	  -->
-	<div id="tabDep_sub1" class="w950">
+	<dl class="info-txt"><dt>최근접속일시 :</dt><dd class="f">2020.01.03&nbsp;10:01:28</dd><dt class="ml10">조회기준일시 :</dt><dd class="f">2020.01.03 10:50:25</dd></dl></div></div><div id="tabDep_sub1" class="w950">
+	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="22%"><col><col width="17%"><col width="18%"><col width="24%"></colgroup><thead><tr><th scope="col">예금명</th><th scope="col">계좌번호</th><th scope="col">최종거래일</th><th scope="col">잔액(원)</th><th scope="col">바로가기</th></tr></thead>
 	
-	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="22%"><col><col width="17%"><col width="18%"><col width="24%"></colgroup>
-	<thead>
-		<tr>
-		<th scope="col">계좌유형</th>
-		<th scope="col">회원명</th>
-		<th scope="col">지점명</th>
-		<th scope="col">계좌상태</th>
-		<th scope="col">계좌번호</th></tr></thead>
-
 	<tbody>
 		<tr>
-
-			<td class="txt-l">${dto.account_type_name }</td>
+			<c:forEach items="${ accountlist }" var="dto">
+			<td class="txt-l">${ dto.account_yegeum_name }</td>
 			<td>
 				<strong>
-					${dto.user_name }
+					<a href="#none" onclick="detailView('0','','false');">${ dto.account_number }</a>
 				</strong>
 			</td>
+			</c:forEach>
 			
-			
-	
-		
-			<td>${dto.loc_bank_name }</td>
+			<c:forEach items="${ adetaillist }" var="dto">
+			<td>${ dto.account_trans_date }</td>
 			<td class="txt-r pr20">
-				<strong class="bluefont">${dto.account_state_name }</strong>
+				<strong class="bluefont">${ dto.account_current_money }원</strong>
 			</td>
+			</c:forEach>
 			
-			<td><a href="/bankJSPProject/account/accountDetail.admin?account_number=${dto.account_number}"> ${dto.account_number }</a> <br>
-			</td>
+			<td class="txt-l pl10">	<div class="fleft">	<span class="btn-pack btn-type-2 ui-set-btn-pack"><a class="js-display-on-off" href="#none" id="inq_layer_dep11" data-show="#" data-hide=".ly-view" data-pre-handler="make_inq_layer('0', this , 'inq_layer_dep11');"><span class="hidden">계좌번호 1002950795501</span>
+			조회<span class="hidden">메뉴확장</span></a></span>	<span class="btn-pack btn-type-2 ui-set-btn-pack"><a class="" href="#none" onclick="tranView('1002950795501');"><span class="hidden">계좌번호 1002950795501</span>이체</a></span>	<span class="btn-pack btn-type-2 ui-set-btn-pack"><a class="js-display-on-off" href="#none" id="manage_layer_dep11" data-show="#" data-hide=".ly-view" data-pre-handler="make_act_manage_layer('0', this , 'manage_layer_dep11');"><span class="hidden">계좌번호 1002950795501</span>계좌관리<span class="hidden">메뉴확장</span></a></span>	</div>	<div class="js-display-hover one-touch-btnw30 w30 fleft ui-set-display-hover">		<a href="/pib/Dream?withyou=PSBKM0103" class="js-display-hover-trigger"><img src="https://simg.wooribank.com//img/section/ps/ico-onetouch-gray.jpg" class="ml4 mt3" alt="원터치 알림"></a>		<div class="js-display-hover-area position-r dis-n">		<div class="one-touch-hover">			<span class="mv10"><a href="/pib/Dream?withyou=PSBKM0103" class="font-12">원터치알림서비스 바로가기</a></span>			<div class="edge-cen02">
+			</div>		</div>		</div>	</div></td>
 			</tr>
 			
 			</tbody>
 			</table>
 			</div>
+
+
+
+
+<div id="tabDep_sub_top2" class="title-area clearfix mt30 data-hidden">	<h3 class="title-block">예금/신탁</h3><div class="title-data"><span class="down" id="totDep2">총잔액 : <strong>0원</strong></span><span class="btn-open printnoa"><a class="js-display-toggle ui-set-display-toggle on" onclick="onDepOpenSet('tabDep_sub2');" data-target="#tabDep_sub2" href="#tabDep_sub2">예금/신탁 닫기</a></span><dl class="info-txt"><dt>최근접속일시 :</dt><dd class="f">2020.01.03&nbsp;10:01:28</dd><dt class="ml10">조회기준일시 :</dt><dd class="f">2020.01.03 10:50:25</dd></dl></div></div><div id="tabDep_sub2" class="w950"><table id="tabDep_sub_table2" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>예금/신탁계좌목록</caption><colgroup><col width="22%"><col><col width="17%"><col width="18%"><col width="24%"></colgroup><thead><tr><th scope="col">예금명</th><th scope="col">계좌번호</th><th scope="col">최종거래일</th><th scope="col">잔액(원)</th><th scope="col">바로가기</th></tr></thead><tbody><tr><td class="nodata" colspan="5">보유중인 상품이 없습니다.<br><span class="ml120">쉬고 있는 여유자금을 깨우는 똑똑한 방법, 예금/신탁으로 활용해보세요.</span>	<span class="ml60 btn-pack btn-type-2 ui-set-btn-pack"><a class="" href="/pib/Dream?withyou=PODEP0001&amp;TAB_GBN=1" ');"="">가입하기</a></span></td></tr></tbody></table></div>
+
+		<div id="tabDep2_sub" class="dis-n">
+			
+			<div class="title-area clearfix data-hidden mt30">
+				<h3 class="title-block">한도대출</h3>
+				<div class="title-data">
+				<span class="down" id="totHan">대출(마이너스)잔액 : <strong>0원</strong></span>
+				<span class="btn-open  printnoa">
+				</span>
+				<!-- <a class="js-display-toggle ui-set-display-toggle" data-target="#tabDep2_min_lon" href="#tabDep2_min_lon" onclick="onDepOpenSet('tabDep2_min_lon');">한도대출 닫기</a> -->
+				</div>
 			</div>
-		<br>
-	</c:forEach>
-</c:if>
+						
+			<div id="tabDep2_min_lon" class="w950">
+				<table id="tabDep2_min_lon_table" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공">
+					<caption>한도대출계좌목록</caption>
+					<colgroup>
+						<col width="22%">
+						<col>
+						<col width="15%">
+						<col width="18%">
+						<col width="24%"> 
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">예금명</th>
+							<th scope="col">계좌번호</th>
+							<th scope="col">만기일</th>
+							<th scope="col">계좌잔액(원)</th>
+							<th scope="col">바로가기</th>
+						</tr>
+					</thead>
+					<tbody>
+						
 
-<c:if test="${empty accountList }">
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="notice-txt">
+				<ul>
+					<li>대출계좌에도 동일하게 표시가 됩니다.</li>
+				</ul>
+			</div>
+			
+		</div>
 		
+		
+		
+		
+		<div class="dis-n" id="noticeMsgRtpen">
+		<div class="notice-bar mt30">
+			<h3 class="notice">알아두세요!</h3>
+			<span class="view">
+			</span>
+<!-- 			<a class="js-display-toggle ui-set-display-toggle" href="#toggleNotice" data-target="#toggleNotice">자세히보기 닫기</a> -->
+		</div>
+		<div id="toggleNotice">
+			<div class="clearfix mb15">
+				<dl class="notice-list">
+					<dd>DC, 기업IRP, 개인형퇴직연금(IRP), 개인형IRP(개인부담금)는 운용손익 및 수수료가 반영되지 않은 통장잔액입니다.</dd>
+				</dl>
+			</div>
+		</div>
+		</div>
 	
-	<div class="title-data">
-
-	<span class="btn-open printnoa">
-	</span><!-- 
-	<a class="js-display-toggle ui-set-display-toggle on" onclick="onDepOpenSet('tabDep_sub1');" data-target="#tabDep_sub1" href="#tabDep_sub1">입출금 닫기</a>
-	  -->
-	<div id="tabDep_sub1" class="w950">
+	</div>	 
+		 
 	
-	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="22%"><col><col width="17%"><col width="18%"><col width="24%"></colgroup>
-	<thead>
-		<tr>
-		<th scope="col">계좌유형</th>
-		<th scope="col">회원명</th>
-		<th scope="col">지점명</th>
-		<th scope="col">계좌상태</th>
-		<th scope="col">계좌번호</th></tr></thead>
-
-	<tbody>
-		<tr>
-	<td class="nodata" colspan="5">계좌가  없습니다.<br>
-	</tbody>
-</c:if>
 
 
+</div>
+</div>
 <script>
-$(function(){});
+$(function() {
+		
+});
 </script>
 </body>
 </html>

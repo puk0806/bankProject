@@ -4,13 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 
-<!-- </head>
-<body> -->
-<jsp:include page="/include/header.jspf"></jsp:include>
+</head>
+<body>
+<jsp:include page="/include/header.jsp"></jsp:include>
 
 <style>
 .ps-main-top {width:950px;margin:0 auto;height:100px;}

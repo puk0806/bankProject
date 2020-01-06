@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 <h3>/adminview/base/product/fo_itemBase</h3>
 <h4>외화</h4>
 <a href="#">상품 조회</a>

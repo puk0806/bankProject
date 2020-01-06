@@ -58,11 +58,13 @@ public class Y_signDAO {
 										,rs.getInt("end_day")
 										,rs.getInt("trancation_money")
 										,rs.getString("deposit_account")
-										,rs.getInt("commission_count"));
+										,rs.getInt("commission_count")
+										,Y_itemDAO.getInstance().getYegeum_interest(conn, rs.getString("y_item_no"))
+						);
 				
 				if(rs.getString("employee_no")!=null) y_signDto.setEmployee_no(rs.getString("employee_no"));
 				if(Ses_typeDAO.getInstance().getSes_date(conn, rs.getString("ses_type_no"))!=0) y_signDto.setSes_date(Ses_typeDAO.getInstance().getSes_date(conn, rs.getString("ses_type_no")));
-				if(rs.getString("ir_period_no")!= null) y_signDto.setInterest(Ir_periodDAO.getInstance().getInterest(conn,rs.getString("ir_period_no")));
+				if(rs.getString("ir_period_no")!= null) y_signDto.setInterest(y_signDto.getInterest()*Ir_periodDAO.getInstance().getInterest(conn,rs.getString("ir_period_no")));
 				if(rs.getString("m_ter_r_no")!=null) y_signDto.setM_interest(M_ter_rDAO.getInstance().getInterest(conn, rs.getString("m_ter_r_no")));
 				list.add(y_signDto);
 				
@@ -107,11 +109,12 @@ public class Y_signDAO {
 										,rs.getInt("end_day")
 										,rs.getInt("trancation_money")
 										,rs.getString("deposit_account")
-										,rs.getInt("commission_count"));
+										,rs.getInt("commission_count")
+										,Y_itemDAO.getInstance().getYegeum_interest(conn, rs.getString("y_item_no")));
 				
 				if(rs.getString("employee_no")!=null) y_signDto.setEmployee_no(rs.getString("employee_no"));
 				if(Ses_typeDAO.getInstance().getSes_date(conn, rs.getString("ses_type_no"))!=0) y_signDto.setSes_date(Ses_typeDAO.getInstance().getSes_date(conn, rs.getString("ses_type_no")));
-				if(rs.getString("ir_period_no")!= null) y_signDto.setInterest(Ir_periodDAO.getInstance().getInterest(conn,rs.getString("ir_period_no")));
+				if(rs.getString("ir_period_no")!= null) y_signDto.setInterest(y_signDto.getInterest()*Ir_periodDAO.getInstance().getInterest(conn,rs.getString("ir_period_no")));
 				if(rs.getString("m_ter_r_no")!=null) y_signDto.setM_interest(M_ter_rDAO.getInstance().getInterest(conn, rs.getString("m_ter_r_no")));
 				list.add(y_signDto);
 				

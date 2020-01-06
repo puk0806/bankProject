@@ -125,7 +125,7 @@ $(".product-search").css("outline","none").attr({tabindex:"0",role:"button"}).fo
 </script>
 </script>
 
-<jsp:include page="/include/header.jspf"></jsp:include>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 
 
 <div id="container" class="snb-padding bg_gray">

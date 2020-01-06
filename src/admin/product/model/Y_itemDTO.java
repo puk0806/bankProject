@@ -56,6 +56,8 @@ public class Y_itemDTO {
 		this.commission_total_count = commission_total_count;
 	}
 
+	
+	
 	public String getY_item_no() {
 		return y_item_no;
 	}

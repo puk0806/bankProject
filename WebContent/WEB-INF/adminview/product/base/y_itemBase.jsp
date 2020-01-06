@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 <h3>/adminview/base/product/y_itemBase</h3>
 <h4>예금</h4>
 <a href="/bankJSPProject/product/y_item.admin">상품 조회</a>

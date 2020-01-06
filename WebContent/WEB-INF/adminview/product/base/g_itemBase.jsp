@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 <h3>/adminview/base/product/g_itemBase</h3>
 <h4>골드</h4>
 <a href="/bankJSPProject/product/g_item.admin">상품 조회</a>

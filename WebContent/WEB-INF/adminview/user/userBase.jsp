@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 <h3>adminview/user/userbase.jsp</h3>
 
 <a href="/bankJSPProject/usermenu/userSearch.admin">모든 유저 보기</a> 

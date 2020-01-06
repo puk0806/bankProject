@@ -19,35 +19,44 @@ public class SearchHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		String command  = request.getRequestURI();
+		// System.out.println("길이"+command.indexOf(FORM_VIEW));
+		if(command.indexOf(FORM_VIEW)==15) {
+			command = command.substring(FORM_VIEW.length()+19,command.length()-6);
+		}
+		System.out.println("command : "+command);
+		
+		
+		
 		if (request.getMethod().equalsIgnoreCase("GET")) {	// 유저 전체 조회
-			return processForm(request, response);
+			return processForm(request, response,command);
 		} else if (request.getMethod().equalsIgnoreCase("POST")) {	// 특정 유저 조회
-			return processSubmit(request, response);
+			return processSubmit(request, response,command);
 		}
 		return null;
 	}
 
-	private String processForm(HttpServletRequest request, HttpServletResponse response) {
+	private String processForm(HttpServletRequest request, HttpServletResponse response,String command) {
+		System.out.println("command : "+command);
 		UserSearchService service  = new UserSearchService();
-		List<U_infoDTO> userList = service.userAllSearch();
+		List<U_infoDTO> userList = null;
+		if(command.equals("/userSearch")) {
+			userList = service.userAllSearch();
+		}
+		
 		request.setAttribute("userList", userList);
-		return FORM_VIEW+"/allUser";
+		return FORM_VIEW+command;
 	}
 
-	private String processSubmit(HttpServletRequest request, HttpServletResponse response) {
-		String command  = request.getRequestURI();
-
-		if(command.indexOf(FORM_VIEW)==15) {
-			command = command.substring(FORM_VIEW.length()+15,command.length()-6);
-		}
-		System.out.println("command : "+command);
+	private String processSubmit(HttpServletRequest request, HttpServletResponse response,String command) {
+		System.out.println("command : "+ command);
 
 		UserSearchService service  = new UserSearchService();
 		List<U_infoDTO> userList = null;
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 		
-		if(command.equals("menu/userByNameByRrnSearch")) {
+		if(command.equals("/userByNameByRrnSearch")) {
 			String user_name = trim(request.getParameter("user_name"));
 			String user_rrn = trim(request.getParameter("user_rrn"));
 			
@@ -63,14 +72,14 @@ public class SearchHandler implements CommandHandler{
 			
 			userList = service.nameRrnSearch(user_name,user_rrn);
 			
-		}else {
+		}else if(command.equals("/userByNameSearch")){
 			String user_name = trim(request.getParameter("user_name"));
 			userList = service.nameSearch(user_name);
 		}
 		
 		request.setAttribute("userList", userList);
 		
-		return FORM_VIEW+"/userInfo";
+		return FORM_VIEW+command;
 	}
 	
 

@@ -31,7 +31,7 @@ public class Y_signDTO {
 		public Y_signDTO(String y_sign_no, String user_name, String account_number, String yegeum_item_name, String item_type_name,
 				String taxfree_type_name, String loc_bank_name, String sns_end_service_type_name,
 				String smart_bridge_type_name, String pledge_set_yn, int end_day, int trancation_money,
-				String deposit_account, int commission_count) {
+				String deposit_account, int commission_count,double interest) {
 			super();
 			this.y_sign_no = y_sign_no;
 			this.user_name = user_name;
@@ -47,6 +47,7 @@ public class Y_signDTO {
 			this.trancation_money = trancation_money;
 			this.deposit_account = deposit_account;
 			this.commission_count = commission_count;
+			this.interest= interest;
 		}
 
 		

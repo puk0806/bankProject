@@ -75,7 +75,7 @@
 </style>
 <body>
 
-<jsp:include page="/include/header.jspf"></jsp:include>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 
 <div id="container" class="snb-padding bg_gray">
 					
@@ -382,7 +382,7 @@ $(function(){
 </div>
 
 
-<jsp:include page="/include/footer.jspf"></jsp:include>
+<jsp:include page="/include/footer.jsp"></jsp:include>
 
 </body>
 </html>

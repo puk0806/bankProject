@@ -124,6 +124,7 @@
 
 	</head> 
 <body>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 
 
 <div id="container" class="snb-padding bg_gray">

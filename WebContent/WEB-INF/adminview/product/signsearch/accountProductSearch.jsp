@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 <h3>/adminview/account/accountProductSearch.jsp</h3>
 
 <div style="margin: 0 auto;width:800px">

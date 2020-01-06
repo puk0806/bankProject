@@ -184,6 +184,32 @@ public class Y_itemDAO {
 	}
 
 	
+	public Double getYegeum_interest(Connection conn, String y_item_no) {
+		String sql = "select * " + 
+				"from y_item " + 
+				" where y_item_no = ? " ;
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		
+		double yegeum_interest = 1;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, y_item_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				yegeum_interest = rs.getDouble("yegeum_interest");
+			}
+		} catch (SQLException e) {
+			System.out.println("Y_itemDAO yegeum_interest 예외");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		return yegeum_interest;
+	}
+	
 
 	public List<Y_itemDTO> selectByYItemNo(Connection conn, String y_item_no) {
 		String sql = "select * from y_item where y_item_no = ? ";

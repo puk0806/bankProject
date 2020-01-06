@@ -254,7 +254,7 @@
 	
 	<dd class="btn">
 		<div class="js-display-hover btn-login">
-			<a href="#none" class="gnb-member-bt  js-display-hover-trigger" onclick="return false;"><span>로그인</span></a>
+			<a href="/bankJSPProject/admin_main.jsp" class="gnb-member-bt  js-display-hover-trigger" onclick="return false;"><span>로그인</span></a>
 			<div class="js-display-hover-area select-banking-type">
 				<a href="https://spib.wooribank.com/pib/Dream?withyou=CMLGN0001" class="on" >개인뱅킹</a>
 				|
@@ -395,7 +395,7 @@ $(function(){ $('.login-name1',$('.my-svc')).text( $('.login-name1',$('.my-svc')
 
 <div class="title-area clearfix" id="contentTitle">
 	
-	<h2 class="fleft">개인로그인</h2>
+	<h2 class="fleft">관리자로그인</h2>
 </div>
  
 <div class="error-wrap">

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 <h3>adminview/product/signsearch/y_signDetail.jsp</h3>
 <c:if test="${empty y_signList }">
 	<h4>상품이 없습니다.</h4>

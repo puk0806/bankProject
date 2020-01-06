@@ -441,20 +441,12 @@ vertical-align: middle;
 </head>
 <body>
 <jsp:include page="/include/adminheader.jsp"></jsp:include>
-<form action="/bankJSPProject/account/accountProductSearch.admin" method="post">
+	<form action="/bankJSPProject/usermenu/userByNameByRrnSearch.admin" method="post">
 	<p>
-		통장 종류 : 
-		<select name="account_type_name">
-			<option>입출금</option>
-			<option>예금</option>
-			<option>적금</option>
-			<option>펀드</option>
-			<option>뮤추얼펀드</option>
-			<option>대출</option>
-			<option>외화</option>
-			<option>골드</option>
-			<option>보험</option>
-		</select>
+		이름 :<br/><input type="text" name="user_name" value="권미지">
+	</p>
+	<p>
+		주민번호 :<br/><input type="password" name="user_rrn" value="9703182222222">
 	</p>
 	<input type="submit" value="검색">
 	</form>
@@ -467,7 +459,7 @@ vertical-align: middle;
 
 <div id="container" class="snb-padding bg_gray">
 <div class="title-area clearfix" id="contentTitle">
-	<h2 class="fleft">모든 계좌 조회</h2>
+	<h2 class="fleft">모든 유저 조회</h2>
 </div>
 
 
@@ -496,10 +488,10 @@ vertical-align: middle;
 
 <div id="tabDep_sub_top1" class="title-area clearfix mt30 data-hidden">
 
-	<h3 class="title-block">계좌</h3>
+	<h3 class="title-block">유저</h3>
 	
-	<c:if test="${not empty accountList }">
-	<c:forEach items="${accountList }" var="dto">
+	<c:if test="${not empty userList }">
+	<c:forEach items="${userList }" var="dto">
 		
 	
 	<div class="title-data">
@@ -513,31 +505,31 @@ vertical-align: middle;
 	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="22%"><col><col width="17%"><col width="18%"><col width="24%"></colgroup>
 	<thead>
 		<tr>
-		<th scope="col">계좌유형</th>
-		<th scope="col">회원명</th>
-		<th scope="col">지점명</th>
-		<th scope="col">계좌상태</th>
-		<th scope="col">계좌번호</th></tr></thead>
+		<th scope="col">이름</th>
+		<th scope="col">주민번호</th>
+		<th scope="col">아이디</th>
+		<th scope="col">국적</th>
+		<th scope="col">도로명주소</th></tr></thead>
 
 	<tbody>
 		<tr>
 
-			<td class="txt-l">${dto.account_type_name }</td>
+			<td class="txt-l">${dto.user_name }</td>
 			<td>
 				<strong>
-					${dto.user_name }
+					${dto.user_rrn }
 				</strong>
 			</td>
 			
 			
 	
 		
-			<td>${dto.loc_bank_name }</td>
+			<td>${dto.user_id }</td>
 			<td class="txt-r pr20">
-				<strong class="bluefont">${dto.account_state_name }</strong>
+				<strong class="bluefont">${dto.country_name }</strong>
 			</td>
 			
-			<td><a href="/bankJSPProject/account/accountDetail.admin?account_number=${dto.account_number}"> ${dto.account_number }</a> <br>
+			<td>${dto.street_addr_name } <br>
 			</td>
 			</tr>
 			
@@ -549,7 +541,7 @@ vertical-align: middle;
 	</c:forEach>
 </c:if>
 
-<c:if test="${empty accountList }">
+<c:if test="${empty userList }">
 		
 	
 	<div class="title-data">
@@ -563,15 +555,15 @@ vertical-align: middle;
 	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="22%"><col><col width="17%"><col width="18%"><col width="24%"></colgroup>
 	<thead>
 		<tr>
-		<th scope="col">계좌유형</th>
-		<th scope="col">회원명</th>
-		<th scope="col">지점명</th>
-		<th scope="col">계좌상태</th>
-		<th scope="col">계좌번호</th></tr></thead>
+		<th scope="col">이름</th>
+		<th scope="col">주민번호</th>
+		<th scope="col">아이디</th>
+		<th scope="col">국적</th>
+		<th scope="col">도로명주소</th></tr></thead>
 
 	<tbody>
 		<tr>
-	<td class="nodata" colspan="5">계좌가  없습니다.<br>
+	<td class="nodata" colspan="5">회원이  없습니다.<br>
 	</tbody>
 </c:if>
 

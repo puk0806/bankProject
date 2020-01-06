@@ -288,5 +288,34 @@ public class S_itemDAO {
 		
 		return total;
 	}
+	public Double getSavng_interest(Connection conn, String s_item_no) {
+		String sql = "select * " + 
+				"from s_item " + 
+				" where s_item_no = ? " ;
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		
+		double savng_interest = 1;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, s_item_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				
+				savng_interest = rs.getDouble("savng_interest");
+				System.out.println("적금 금리 얻어옴 : "+savng_interest);
+			}else {
+				System.out.println("적금 금리 못 얻어옴 : "+savng_interest);
+			}
+		} catch (SQLException e) {
+			System.out.println("S_itemDAO getSavng_interest 예외");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		return savng_interest;
+	}
 
 }

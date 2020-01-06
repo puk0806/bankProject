@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/include/adminheader.jsp"></jsp:include>
 <h3>adminview/product/signsearch/si_signDetail.jsp</h3>
 
 <c:if test="${empty si_signList }">
