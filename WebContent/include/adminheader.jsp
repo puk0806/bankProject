@@ -415,7 +415,7 @@
 											</dd>
 											<dd>
 												<a
-													href="/bankJSPProject/product/y_itemRegister.admin">예금 상품 가입 </a>
+													href="/bankJSPProject/product/y_itemRegister.admin">예금 상품 등록 </a>
 											</dd>
 											<dd>
 												<a
@@ -438,7 +438,7 @@
 											</dd>
 											<dd>
 												<a
-													href="/bankJSPProject/product/s_itemRegister.admin">적금 상품 가입 </a>
+													href="/bankJSPProject/product/s_itemRegister.admin">적금 상품 등록 </a>
 											</dd>
 											<dd>
 												<a
@@ -460,7 +460,7 @@
 											</dd>
 											<dd>
 												<a
-													href="#">펀드 상품 가입 </a>
+													href="#">펀드 상품 등록 </a>
 											</dd>
 											<dd>
 												<a
@@ -483,7 +483,7 @@
 											</dd>
 											<dd>
 												<a
-													href="#">뮤추얼펀드 상품 가입 </a>
+													href="#">뮤추얼펀드 상품 등록 </a>
 											</dd>
 											<dd>
 												<a
@@ -506,7 +506,7 @@
 											</dd>
 											<dd>
 												<a
-													href="#">대출 상품 가입 </a>
+													href="#">대출 상품 등록 </a>
 											</dd>
 											<dd>
 												<a
@@ -529,7 +529,7 @@
 											</dd>
 											<dd>
 												<a
-													href="#">외화 상품 가입 </a>
+													href="#">외화 상품 등록 </a>
 											</dd>
 											<dd>
 												<a
@@ -550,7 +550,7 @@
 											</dd>
 											<dd>
 												<a
-													href="/bankJSPProject/product/g_itemRegister.admin">골드 상품 가입 </a>
+													href="/bankJSPProject/product/g_itemRegister.admin">골드 상품 등록 </a>
 											</dd>
 											<dd>
 												<a
@@ -571,7 +571,7 @@
 											</dd>
 											<dd>
 												<a
-													href="#">보험 상품 가입 </a>
+													href="#">보험 상품 등록 </a>
 											</dd>
 											<dd>
 												<a

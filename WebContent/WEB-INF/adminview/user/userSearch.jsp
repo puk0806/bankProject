@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JAEWOO - Jan 2, 2020 - 11:18:06 AM</title>
+<title>유저 검색 -우리은행</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link  rel="stylesheet" href="https://simg.wooribank.com/css/base.css?1547197091000" type="text/css" />
 
@@ -441,7 +441,6 @@ vertical-align: middle;
 </head>
 <body>
 <jsp:include page="/include/adminheader.jsp"></jsp:include>
-<h3>adminview/user/userSearch.jsp</h3>
 
 
 
@@ -555,7 +554,7 @@ vertical-align: middle;
 	<td class="nodata" colspan="5">회원이  없습니다.<br>
 	</tbody>
 </c:if>
-
+<jsp:include page="/include/footer.jsp"></jsp:include>
 
 <script>
 $(function(){});

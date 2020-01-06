@@ -614,7 +614,7 @@ span.clse-sm a {display:inline-block;width:18px;height:18px;font-size:0;line-hei
 /*#endregion button */
 
 /*#region notice */
-.notice-bx {clear:both;position:relative;padding:0;overflow:hidden;border:1px solid #e5e5e5;background:#fff url(/img/common/etc/img_notice1.gif) no-repeat 30px center;margin:0}
+.notice-bx {clear:both;position:relative;padding:0;overflow:hidden;border:1px solid #e5e5e5;background:#fff url(https://postfiles.pstatic.net/MjAyMDAxMDZfMTkz/MDAxNTc4MjcwNjc3MTkx.ESQSBiuipeOurJKNNMaKcQMLLhRKzIna2zJ940lvAcgg._ZwPv9C4zlz4dL7Io7Fi-czr9ZNxeOBYeKUR7v4aXEAg.GIF.hoyouni/img_notice1.gif?type=w580) no-repeat 30px center;margin:0}
 .notice-bx span.view {display:none;position:absolute;bottom:6px;right:10px;width:18px;height:20px;background:url(/img/common/etc/btn_notice1_view.gif) no-repeat}
 .notice-bx span.view a {display:none;width:18px;height:18px;font-size:0;line-height:0;text-indent:-2000px}
 .notice-bx h3.notice {font-size:0 !important;line-height:0;position:absolute;top:-5000px;left:0;_display:none}
@@ -1388,7 +1388,7 @@ a.png {display:inline-block;width:17px;height:19px;font-size:0 !important;line-h
 a.file-link {display:inline-block;font-size:14px;background: url(/img/common/etc/file_file.gif) no-repeat left 2px;padding-left:27px;margin-right:40px;height:19px}
 a.xlsx-link {display:inline-block;font-size:14px;background: url(/img/common/etc/file_xlsx.gif) no-repeat left 2px;padding-left:27px;margin-right:40px;height:19px}
 a.pptx-link {display:inline-block;font-size:14px;background: url(/img/common/etc/file_pptx.gif) no-repeat left 2px;padding-left:27px;margin-right:40px;height:19px}
-.pdf-link  {display:inline-block;font-size:14px;background: url(/img/common/etc/file_pdf.gif) no-repeat left 2px;padding-left:27px;margin-right:20px;height:19px}
+.pdf-link  {display:inline-block;font-size:14px;background: url(https://postfiles.pstatic.net/MjAyMDAxMDZfODAg/MDAxNTc4MjcwNzIyMTAy.2dZlZmAk87DUsYSdGCZYfB6NNAGfT7NpG5UfN7sP-B4g.UagGO5H_c_CPKNuA4INzxLk20H5uQ5B3BTaOGlP91sgg.GIF.hoyouni/file_pdf.gif?type=w580) no-repeat left 2px;padding-left:27px;margin-right:20px;height:19px}
 a.hwp-link  {display:inline-block;font-size:14px;background: url(/img/common/etc/file_hwp.gif) no-repeat left 2px;padding-left:27px;margin-right:40px;height:19px}
 a.doc-link  {display:inline-block;font-size:14px;background: url(/img/common/etc/file_doc.gif) no-repeat left 2px;padding-left:27px;margin-right:40px;height:19px}
 a.html-link {display:inline-block;font-size:14px;background: url(/img/common/etc/file_ie.gif) no-repeat left 2px;padding-left:27px;margin-right:40px;height:19px}

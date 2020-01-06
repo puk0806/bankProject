@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품 가입 -우리은행</title>
 </head>
 <body>
 <jsp:include page="/include/adminheader.jsp"></jsp:include>
-<h3>/adminview/account/accountProductSearch.jsp</h3>
 
 <div style="margin: 0 auto;width:800px">
 	<form action="/bankJSPProject/account/accountProductSearch.admin" method="post">
@@ -45,7 +44,7 @@
 	</c:forEach>
 </c:if>
 
-
+<jsp:include page="/include/footer.jsp"></jsp:include>
 
 <script>
 $(function(){});

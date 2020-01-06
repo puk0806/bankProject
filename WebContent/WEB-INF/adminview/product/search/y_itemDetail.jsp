@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예금 상품 상세 -우리은행</title>
 <link rel="stylesheet"
 	href="/bankJSPProject/basic/css/base.css?1547196841000" type="text/css" />
 <link rel="stylesheet"
@@ -837,7 +837,7 @@
 </script>
 
 			</div>
-			
+			<jsp:include page="/include/footer.jsp"></jsp:include>
 
 </body>
 </html>

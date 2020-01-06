@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>유저 정보 -우리은행</title>
 </head>
 <body>
 <jsp:include page="/include/adminheader.jsp"></jsp:include>
-<h3>adminview/user/userinfo.jsp</h3>
 
 <c:if test="${empty userList }">
 	<h4>회원이 없습니다.</h4>
@@ -24,5 +23,6 @@
 		<br>
 	</c:forEach>
 </c:if>
+<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>

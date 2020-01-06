@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>골등 상품 상세 -우리은행</title>
 <link rel="stylesheet"
 	href="/bankJSPProject/basic/css/base.css?1547196841000" type="text/css" />
 <link rel="stylesheet"
@@ -672,6 +672,6 @@
 
 			</div>
 			
-
+<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>

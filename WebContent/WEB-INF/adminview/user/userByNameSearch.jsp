@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JAEWOO - Jan 2, 2020 - 11:18:06 AM</title>
+<title>계좌 이름 검색 -우리은행 </title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link  rel="stylesheet" href="https://simg.wooribank.com/css/base.css?1547197091000" type="text/css" />
 
@@ -441,25 +441,23 @@ vertical-align: middle;
 </head>
 <body>
 <jsp:include page="/include/adminheader.jsp"></jsp:include>
-<form action="/bankJSPProject/usermenu/userByNameSearch.admin" method="post">
-	<p>
-		이름 조회 :<br/><input type="text" name="user_name" value="박">
-	</p>
-	<input type="submit" value="검색">
-	</form>
 
 
-<h3>adminview/user/userSearch.jsp</h3>
+
 
 
 
 
 <div id="container" class="snb-padding bg_gray">
 <div class="title-area clearfix" id="contentTitle">
-	<h2 class="fleft">모든 유저 조회</h2>
+	<h2 class="fleft">특정 유저 조회</h2>
 </div>
-
-
+<form action="/bankJSPProject/usermenu/userByNameSearch.admin" method="post">
+	<p>
+		이름 조회 :<br/><input type="text" name="user_name" value="박">
+	</p>
+	<input type="submit" value="검색">
+	</form>
 
 
 <div id="tabDep">
@@ -564,7 +562,7 @@ vertical-align: middle;
 	</tbody>
 </c:if>
 
-
+<jsp:include page="/include/footer.jsp"></jsp:include>
 <script>
 $(function(){});
 </script>

@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>유저 -우리은행</title>
 </head>
 <body>
 <jsp:include page="/include/adminheader.jsp"></jsp:include>
-<h3>adminview/user/userbase.jsp</h3>
 
 <a href="/bankJSPProject/usermenu/userSearch.admin">모든 유저 보기</a> 
 <br>
@@ -36,7 +35,7 @@
 	
 </div>
 
-
+<jsp:include page="/include/footer.jsp"></jsp:include>
 <script>
 $(function(){});
 </script>

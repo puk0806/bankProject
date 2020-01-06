@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JAEWOO - Jan 2, 2020 - 11:18:06 AM</title>
+<title>유저 검색 -우리은행</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link  rel="stylesheet" href="https://simg.wooribank.com/css/base.css?1547197091000" type="text/css" />
 
@@ -441,6 +441,14 @@ vertical-align: middle;
 </head>
 <body>
 <jsp:include page="/include/adminheader.jsp"></jsp:include>
+
+
+
+
+<div id="container" class="snb-padding bg_gray">
+<div class="title-area clearfix" id="contentTitle">
+	<h2 class="fleft">특정 유저 조회</h2>
+</div>
 	<form action="/bankJSPProject/usermenu/userByNameByRrnSearch.admin" method="post">
 	<p>
 		이름 :<br/><input type="text" name="user_name" value="권미지">
@@ -450,17 +458,6 @@ vertical-align: middle;
 	</p>
 	<input type="submit" value="검색">
 	</form>
-
-
-<h3>adminview/user/userSearch.jsp</h3>
-
-
-
-
-<div id="container" class="snb-padding bg_gray">
-<div class="title-area clearfix" id="contentTitle">
-	<h2 class="fleft">모든 유저 조회</h2>
-</div>
 
 
 
@@ -567,7 +564,7 @@ vertical-align: middle;
 	</tbody>
 </c:if>
 
-
+<jsp:include page="/include/footer.jsp"></jsp:include>
 <script>
 $(function(){});
 </script>

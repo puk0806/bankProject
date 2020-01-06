@@ -5,17 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>외화 상품 -우리은행</title>
 </head>
 <body>
 <jsp:include page="/include/adminheader.jsp"></jsp:include>
-<h3>/adminview/base/product/fo_itemBase</h3>
 <h4>외화</h4>
 <a href="#">상품 조회</a>
 <a href="#">상품 가입</a>
 <a href="#">상품 가입확인(상세)</a>
 
-
+<jsp:include page="/include/footer.jsp"></jsp:include>
 <script>
 $(function(){});
 </script>

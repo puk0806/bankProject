@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JAEWOO - Jan 2, 2020 - 11:18:06 AM</title>
+<title>골드 상품 상세 -우리은행</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link  rel="stylesheet" href="https://simg.wooribank.com/css/base.css?1547197091000" type="text/css" />
 
@@ -93,180 +93,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .ly-view .cont {
     position: static;
     padding: 10px 15px 15px 15px;
     text-align: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -408,35 +239,6 @@ vertical-align: middle;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 </head>
 <body>
@@ -477,10 +279,13 @@ vertical-align: middle;
 
 <div id="tabDep_sub_top1" class="title-area clearfix mt30 data-hidden">
 
-	<h3 class="title-block">유저</h3>
+	<h3 class="title-block">가입정보</h3>
 	
-	<c:if test="${not empty userList }">
-	<c:forEach items="${userList }" var="dto">
+	
+	
+	
+<c:if test="${not empty gi_signList }">
+	<c:forEach items="${gi_signList }" var="dto">
 		
 	
 	<div class="title-data">
@@ -494,11 +299,14 @@ vertical-align: middle;
 	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="22%"><col><col width="17%"><col width="18%"><col width="24%"></colgroup>
 	<thead>
 		<tr>
-		<th scope="col">이름</th>
-		<th scope="col">주민번호</th>
-		<th scope="col">아이디</th>
-		<th scope="col">국적</th>
-		<th scope="col">도로명주소</th></tr></thead>
+		<th scope="col">회원명</th>
+		<th scope="col">계좌번호</th>
+		<th scope="col">상품명</th>
+		<th scope="col">상품유형</th>		
+		<th scope="col">통화</th>
+		<th scope="col">출금계좌</th>
+		
+		</tr></thead>
 
 	<tbody>
 		<tr>
@@ -506,19 +314,20 @@ vertical-align: middle;
 			<td class="txt-l">${dto.user_name }</td>
 			<td>
 				<strong>
-					${dto.user_rrn }
+					<a href="/bankJSPProject/account/accountDetail.admin?account_number=${dto.account_number}"> ${dto.account_number }</a>
 				</strong>
 			</td>
 			
 			
 	
 		
-			<td>${dto.user_id }</td>
+			<td>${dto.g_item_name }</td>
 			<td class="txt-r pr20">
-				<strong class="bluefont">${dto.country_name }</strong>
+				<strong class="bluefont">${dto.item_type_name }</strong>
 			</td>
-			
-			<td>${dto.street_addr_name } <br>
+			<td>${dto.currency_name } <br>
+			</td>
+			<td>${dto.deposit_account } <br>
 			</td>
 			</tr>
 			
@@ -530,7 +339,12 @@ vertical-align: middle;
 	</c:forEach>
 </c:if>
 
-<c:if test="${empty userList }">
+
+	<h3 class="title-block">특기사항</h3>
+
+
+<c:if test="${not empty remarksList }">
+	<c:forEach items="${remarksList }" var="dto">
 		
 	
 	<div class="title-data">
@@ -541,18 +355,85 @@ vertical-align: middle;
 	  -->
 	<div id="tabDep_sub1" class="w950">
 	
-	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="22%"><col><col width="17%"><col width="18%"><col width="24%"></colgroup>
+	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="25%"><col><col width="25%"><col width="25%"></colgroup>
 	<thead>
 		<tr>
-		<th scope="col">이름</th>
-		<th scope="col">주민번호</th>
-		<th scope="col">아이디</th>
-		<th scope="col">국적</th>
-		<th scope="col">도로명주소</th></tr></thead>
+		<th scope="col">지점명</th>
+		<th scope="col">종류</th>
+		<th scope="col">등록일</th>
+		<th scope="col">지급정지구분</th>
+		</tr>
+		<tr>
+		<th scope="col">의뢰인명</th>
+		<th scope="col">구분</th>
+		<th scope="col">사유</th>
+		<th scope="col">금유</th>
+		</tr>
+		</thead>
 
 	<tbody>
 		<tr>
-	<td class="nodata" colspan="5">회원이  없습니다.<br>
+
+			<td class="txt-l">${dto.loc_bank_name }</td>
+			<td>
+				<strong>
+					${dto.remarks_type } <br>
+				</strong>
+			</td>
+			<td>${dto.remarks_create_date }</td>
+			<td class="txt-r pr20">
+				<strong class="bluefont">${dto.remarks_payment_stop }</strong>
+			</td>
+		</tr>
+		<tr>
+			<td>${dto.remarks_clientname } <br>
+			</td>
+			<td>${dto.remarks_division } <br>
+			</td>
+			<td>${dto.remarks_reason } <br>
+			</td>
+			<td>${dto.remarks_money } <br>
+			</td>
+			</tr>
+			
+			</tbody>
+			</table>
+			</div>
+			</div>
+		<br>
+	</c:forEach>
+</c:if>
+
+<c:if test="${empty remarksList }">
+		
+	
+	<div class="title-data">
+
+	<span class="btn-open printnoa">
+	</span><!-- 
+	<a class="js-display-toggle ui-set-display-toggle on" onclick="onDepOpenSet('tabDep_sub1');" data-target="#tabDep_sub1" href="#tabDep_sub1">입출금 닫기</a>
+	  -->
+	<div id="tabDep_sub1" class="w950">
+	
+	<table id="tabDep_sub_table1" data-auto-summary="false" class="tbl-type-1 ui-set-tbl-type" border="1" cellspacing="0" summary="예금명, 계좌번호, 최종거래일, 잔액(원), 바로가기 제공"><caption>입출금계좌목록</caption><colgroup><col width="25%"><col width="25%"><col width="25%"><col width="25%"></colgroup>
+	<thead>
+		<tr>
+		<th scope="col">지점명</th>
+		<th scope="col">종류</th>
+		<th scope="col">등록일</th>
+		<th scope="col">지급정지구분</th>
+		</tr>
+		<tr>
+		<th scope="col">의뢰인명</th>
+		<th scope="col">구분</th>
+		<th scope="col">사유</th>
+		<th scope="col">금유</th>
+		</tr>
+		</thead>
+
+	<tbody>
+		<tr>
+	<td class="nodata" colspan="5">특기 사항  없습니다.<br>
 	</tbody>
 </c:if>
 

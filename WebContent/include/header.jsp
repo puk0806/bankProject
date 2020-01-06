@@ -130,7 +130,7 @@
 		</div>
 		
 		
-		<a href="/pib/Dream?withyou=PSCNT0011" class="login-name"> ${ authUser.name } </a>&nbsp;
+		<a href="/pib/Dream?withyou=PSCNT0011" class="login-name"> ${ authUser.user_name } </a>&nbsp;
 		<a href="/pib/Dream?withyou=PSCNT0011" class="login-name1" style="display: none;"> <span class="hidden" id="noteCount"></span></a>
 	</dd>
 	<dd class="timer">
@@ -329,7 +329,7 @@
 												<a href="#">장기미거래신탁계좌조회</a>
 											</dd>
 											<dd>
-												<a href="#">월평균계좌잔액조회</a>
+												<a href="/bankJSPProject/search/accountsearch/monthAvgAccountSearch.do">월평균계좌잔액조회</a>
 											</dd>
 										</dl></li>
 
@@ -347,7 +347,7 @@
 
 									<li><dl>
 											<dt>
-												<a href="#">수표/어음조회</a>
+												<a href="/bankJSPProject/search/checkdraftsearch/checkSearch.do">자기앞수표조회</a>
 											</dt>
 											<dd>
 												<a href="#">자기앞수표조회</a>
@@ -416,7 +416,7 @@
 
 <!-- 이체관련해더-->
 					<li class="level1-item  level1-item-1 "><a
-						href="#" class="level1-item-a-1">이체</a>
+						href="transfer/immediateTransfer/immediatetransfer.do" class="level1-item-a-1">이체</a>
 
 						<div class='lnb-sub-ly'>
 							<div class='lnb-ly'>
@@ -424,10 +424,10 @@
 
 									<li><dl>
 											<dt>
-												<a href="#">자금이체</a>
+												<a href="transfer/immediateTransfer/immediatetransfer.do">자금이체</a>
 											</dt>
 											<dd>
-												<a href="#">즉시이체/예약이체</a>
+												<a href="transfer/immediateTransfer/immediatetransfer.do">즉시이체/예약이체</a>
 											</dd>
 											<dd>
 												<a href="#">다계좌이체</a>
@@ -454,13 +454,13 @@
 												<a href="#">이체결과조회</a>
 											</dt>
 											<dd>
-												<a href="#">이체결과조회</a>
+												<a href="/bankJSPProject/transfer/transferresultsearch/transferresultsearch.do">이체결과조회</a>
 											</dd>
 											<dd>
-												<a href="#">펀드계좌이체결과조회</a>
+												<a href="/bankJSPProject/transfer/transferresultsearch/fundaccounttransresultsearch.do">펀드계좌이체결과조회</a>
 											</dd>
 											<dd>
-												<a href="#">전화승인서비스결과조회</a>
+												<a href="/bankJSPProject/transfer/transferresultsearch/telephoneApprovalServiceSearch.do">전화승인서비스결과조회</a>
 											</dd>
 										</dl></li>
 
@@ -469,13 +469,13 @@
 												<a href="#">자동이체</a>
 											</dt>
 											<dd>
-												<a href="#">자동이체조회/등록/변경</a>
+												<a href="/bankJSPProject/transfer/automatictransfer/autoTransferSearch.do">자동이체조회/등록/변경</a>
 											</dd>
 											<dd>
-												<a href="#">(외부)출금동의관리</a>
+												<a href="/bankJSPProject/transfer/automatictransfer/autoTransWithdrawTimeChange.do">자동이체출금시간변경</a>
 											</dd>
 											<dd>
-												<a href="#">자동이체출금시간변경</a>
+												<a href="/bankJSPProject/transfer/automatictransfer/autoTransWithdrawResultSearch.do">자동이체출금결과조회</a>
 											</dd>
 											<dd>
 												<a href="#">자동이체출금결과조회</a>
@@ -761,7 +761,7 @@
 												<a href="#">예금신규</a>
 											</dt>
 											<dd>
-												<a href="#">예금신규가입</a>
+												<a href="/bankJSPProject/deposittrust/deposittrustnew/depositTrustNew.do">예금신규가입</a>
 											</dd>
 											<dd>
 												<a href="#">베스트상품</a>

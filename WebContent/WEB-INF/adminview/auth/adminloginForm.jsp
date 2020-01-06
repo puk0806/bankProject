@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 로그인 -우리은행</title>
 <link  rel="stylesheet" href="/bankJSPProject/basic/css/login.css?1576573200000" type="text/css" />
 
 <link  rel="stylesheet" href="/bankJSPProject/basic/css/ML4Web_BS/ML4Web_BS_style.css?1543914021000" type="text/css" />

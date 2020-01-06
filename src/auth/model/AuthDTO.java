@@ -3,6 +3,7 @@ package auth.model;
 public class AuthDTO {
 
 	private String info_no;
+	private String user_name;
 	private String name;
 	private String user_id;
 	private String user_pwd;
@@ -11,15 +12,23 @@ public class AuthDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AuthDTO(String info_no, String name, String user_id, String user_pwd) {
+	public AuthDTO(String info_no, String user_name, String user_id, String user_pwd) {
 		super();
 		this.info_no = info_no;
-		this.name = name;
+		this.user_name = user_name;
+		this.name = user_name;
 		this.user_id = user_id;
 		this.user_pwd = user_pwd;
 	}
-
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getInfo_no() {
 		return info_no;
 	}
@@ -28,12 +37,13 @@ public class AuthDTO {
 		this.info_no = info_no;
 	}
 
-	public String getName() {
-		return name;
+	
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 	public String getUser_id() {
